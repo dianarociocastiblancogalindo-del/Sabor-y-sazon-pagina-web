@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sabor y Sazón — Comida saludable para tu empresa y tus eventos</title>
+<meta name="description" content="Comida saludable 100% en línea. Eventos empresariales, cubrimiento de eventos y refrigerio diario 24/7 para empresas en Bogotá y la Sabana.">
+<link rel="icon" type="image/jpeg" href="images/logo.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --verde-oscuro:#3E5902;
+    --verde-lima:#B9BF11;
+    --dorado:#F29F05;
+    --naranja:#F25C05;
+    --teja:#BF2604;
+    --crema:#FBF8EC;
+    --crema-suave:#F4EFDC;
+    --texto:#2B3403;
+    --texto-suave:#5B6430;
+    --blanco:#FFFEF9;
+    --radio:22px;
+    --sombra: 0 18px 40px -20px rgba(62,89,2,0.35);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Manrope',sans-serif;
+    background:var(--crema);
+    color:var(--texto);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    color:var(--verde-oscuro);
+    letter-spacing:-0.01em;
+  }
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  img{max-width:100%;display:block;}
+  .contenedor{
+    width:min(1140px, 92%);
+    margin-inline:auto;
+  }
+  .eyebrow{
+    font-family:'Manrope',sans-serif;
+    font-weight:800;
+    font-size:.75rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--naranja);
+    display:inline-flex;
+    align-items:center;
+    gap:.5em;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px;height:2px;
+    background:var(--naranja);
+    display:inline-block;
+  }
+  .boton{
+    display:inline-flex;
+    align-items:center;
+    gap:.6em;
+    padding:.95em 1.7em;
+    border-radius:100px;
+    font-weight:700;
+    font-size:.95rem;
+    border:2px solid transparent;
+    cursor:pointer;
+    transition:transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease;
+  }
+  .boton-solido{
+    background:var(--dorado);
+    color:var(--verde-oscuro);
+    box-shadow:0 12px 24px -10px rgba(242,159,5,0.55);
+  }
+  .boton-solido:hover{transform:translateY(-3px);box-shadow:0 18px 30px -10px rgba(242,159,5,0.6);}
+  .boton-fantasma{
+    border-color:rgba(255,254,249,0.5);
+    color:var(--blanco);
+  }
+  .boton-fantasma:hover{background:rgba(255,254,249,0.12);transform:translateY(-3px);}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(251,248,236,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(62,89,2,0.08);
+  }
+  .nav-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:1.1rem 0;
+  }
+  .logo{
+    display:flex;align-items:center;gap:.6rem;
+    font-family:'Fraunces',serif;
+    font-weight:700;
+    font-size:1.25rem;
+    color:var(--verde-oscuro);
+  }
+  .logo .punto{width:11px;height:11px;border-radius:50%;background:var(--teja);}
+  .logo-img{
+    width:42px;height:42px;border-radius:50%;object-fit:cover;
+    box-shadow:0 4px 12px -4px rgba(62,89,2,0.4);
+  }
+  .nav-links{display:flex;gap:2.2rem;font-weight:600;font-size:.92rem;}
+  .nav-links a{position:relative;padding:.2rem 0;color:var(--texto);}
+  .nav-links a::after{
+    content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--naranja);
+    transition:width .25s ease;
+  }
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{display:none;}
+  @media(min-width:820px){.nav-cta{display:inline-flex;}}
+  .menu-btn{
+    display:flex;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:.4rem;
+  }
+  .menu-btn span{width:24px;height:2px;background:var(--verde-oscuro);border-radius:2px;}
+  @media(min-width:820px){.menu-btn{display:none;}}
+  .nav-links{display:none;}
+  @media(min-width:820px){.nav-links{display:flex;}}
+  #menu-movil{
+    display:none;flex-direction:column;gap:1rem;padding:1rem 0 1.6rem;font-weight:600;
+  }
+  #menu-movil.abierto{display:flex;}
+  @media(min-width:820px){#menu-movil{display:none !important;}}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    background:radial-gradient(120% 140% at 15% -10%, #4d6b04 0%, var(--verde-oscuro) 55%, #2c3d02 100%);
+    color:var(--blanco);
+    padding:6.5rem 0 7rem;
+    overflow:hidden;
+    isolation:isolate;
+  }
+  .salpicaduras{position:absolute;inset:0;z-index:-1;opacity:.9;}
+  .hero-grid{
+    display:grid;grid-template-columns:1fr;gap:3rem;align-items:center;
+  }
+  @media(min-width:960px){.hero-grid{grid-template-columns:1.1fr .8fr;}}
+  .hero h1{
+    color:var(--blanco);
+    font-size:clamp(2.4rem,5.2vw,3.6rem);
+    line-height:1.08;
+    margin:1rem 0 1.3rem;
+    max-width:14ch;
+  }
+  .hero p.lead{
+    color:#EAF0CE;
+    font-size:1.08rem;
+    max-width:46ch;
+    margin-bottom:2.2rem;
+  }
+  .hero-acciones{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:2.6rem;}
+  .hero-datos{display:flex;flex-wrap:wrap;gap:2.2rem;}
+  .hero-dato{border-left:2px solid rgba(255,254,249,0.3);padding-left:.9rem;}
+  .hero-dato b{display:block;font-family:'Fraunces',serif;font-size:1.15rem;color:var(--dorado);}
+  .hero-dato span{font-size:.82rem;color:#D8E0AE;}
+
+  .sello-wrap{display:flex;justify-content:center;}
+  .sello{
+    width:min(300px, 78vw);
+    border-radius:50%;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.45);
+    animation:flotar 5s ease-in-out infinite;
+  }
+  @media (prefers-reduced-motion: reduce){ .sello{animation:none;} .reveal{opacity:1 !important; transform:none !important;} }
+  @keyframes flotar{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-14px);}
+  }
+
+  /* ---------- SECCIONES GENERALES ---------- */
+  section{padding:6rem 0;position:relative;}
+  .encabezado-seccion{max-width:640px;margin-bottom:3.2rem;}
+  .encabezado-seccion h2{font-size:clamp(1.9rem,3.4vw,2.5rem);margin-top:.6rem;}
+  .encabezado-seccion p{color:var(--texto-suave);font-size:1.02rem;margin-top:.9rem;}
+
+  /* ---------- NUESTRA COMIDA ---------- */
+  #comida{background:var(--blanco);}
+  .galeria-comida{
+    display:grid;
+    grid-template-columns:1fr;
+    grid-auto-rows:220px;
+    gap:1rem;
+  }
+  @media(min-width:720px){
+    .galeria-comida{
+      grid-template-columns:repeat(4,1fr);
+      grid-auto-rows:170px;
+    }
+    .item-grande{grid-column:span 2;grid-row:span 2;}
+    .item-mediano{grid-column:span 2;grid-row:span 1;}
+  }
+  .item-galeria{
+    position:relative;border-radius:var(--radio);overflow:hidden;
+    box-shadow:var(--sombra);
+  }
+  .item-galeria img{
+    width:100%;height:100%;object-fit:cover;
+    transition:transform .5s ease;
+  }
+  .item-galeria:hover img{transform:scale(1.06);}
+  .item-galeria .etiqueta{
+    position:absolute;left:.9rem;bottom:.9rem;
+    background:rgba(43,52,3,0.72);
+    color:var(--blanco);
+    font-size:.78rem;font-weight:700;letter-spacing:.03em;
+    padding:.45em .95em;border-radius:100px;
+    backdrop-filter:blur(4px);
+  }
+
+  /* ---------- SERVICIOS ---------- */
+  #servicios{background:var(--crema);}
+  .grid-servicios{
+    display:grid;grid-template-columns:1fr;gap:1.4rem;
+  }
+  @media(min-width:700px){.grid-servicios{grid-template-columns:1fr 1fr;}}
+  .tarjeta-servicio{
+    background:var(--blanco);
+    border-radius:var(--radio);
+    padding:2.1rem 1.9rem;
+    box-shadow:var(--sombra);
+    border-top:5px solid var(--acento, var(--dorado));
+    transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .tarjeta-servicio:hover{transform:translateY(-6px);}
+  .tarjeta-servicio .icono{
+    width:52px;height:52px;border-radius:16px;
+    display:flex;align-items:center;justify-content:center;
+    background:color-mix(in srgb, var(--acento, var(--dorado)) 16%, white);
+    margin-bottom:1.1rem;
+  }
+  .tarjeta-servicio .icono svg{width:26px;height:26px;stroke:var(--acento, var(--dorado));}
+  .tarjeta-servicio h3{font-size:1.18rem;margin-bottom:.55rem;}
+  .tarjeta-servicio p{color:var(--texto-suave);font-size:.95rem;}
+  .tarjeta-servicio .num{
+    font-family:'Fraunces',serif;font-size:.8rem;font-weight:700;
+    color:var(--acento, var(--dorado));letter-spacing:.06em;margin-bottom:.4rem;display:block;
+  }
+  .banner-presupuesto{
+    margin-top:2.4rem;
+    background:linear-gradient(120deg, var(--verde-oscuro), #4d6b04);
+    color:var(--blanco);
+    border-radius:100px;
+    padding:1.1rem 2rem;
+    display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;
+    justify-content:center;text-align:center;
+    box-shadow:var(--sombra);
+  }
+  .banner-presupuesto svg{width:22px;height:22px;stroke:var(--verde-lima);flex-shrink:0;}
+  .banner-presupuesto p{font-weight:700;font-size:1rem;}
+  .banner-presupuesto p span{color:var(--verde-lima);}
+
+  /* ---------- SOBRE NOSOTROS ---------- */
+  #nosotros{background:var(--crema-suave);}
+  .nosotros-grid{
+    display:grid;grid-template-columns:1fr;gap:3rem;align-items:center;
+  }
+  @media(min-width:900px){.nosotros-grid{grid-template-columns:1fr 1fr;}}
+  .nosotros-texto p{color:var(--texto-suave);margin-bottom:1.1rem;font-size:1.02rem;}
+  .stats-mini{display:flex;flex-wrap:wrap;gap:1.6rem;margin-top:1.8rem;}
+  .stat-mini{
+    background:var(--blanco);border-radius:16px;padding:1rem 1.3rem;box-shadow:var(--sombra);
+    min-width:150px;
+  }
+  .stat-mini b{display:block;font-family:'Fraunces',serif;color:var(--teja);font-size:1.3rem;}
+  .stat-mini span{font-size:.82rem;color:var(--texto-suave);}
+  .ilustracion-plato{width:100%;max-width:420px;margin-inline:auto;}
+
+  /* ---------- COBERTURA ---------- */
+  #cobertura{
+    background:var(--verde-oscuro);
+    color:var(--blanco);
+  }
+  #cobertura .encabezado-seccion h2{color:var(--blanco);}
+  #cobertura .encabezado-seccion p{color:#D8E0AE;}
+  .cobertura-grid{
+    display:grid;grid-template-columns:1fr;gap:2.6rem;align-items:center;
+  }
+  @media(min-width:900px){.cobertura-grid{grid-template-columns:1fr 1fr;}}
+  .mapa-abstracto{width:100%;max-width:420px;margin-inline:auto;}
+  .lista-municipios{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.6rem;}
+  .chip-municipio{
+    border:1px solid rgba(255,254,249,0.35);
+    border-radius:100px;padding:.5em 1.1em;font-size:.86rem;font-weight:600;
+  }
+
+  /* ---------- REDES ---------- */
+  #redes{background:var(--crema);text-align:center;}
+  #redes .encabezado-seccion{margin-inline:auto;text-align:center;}
+  .redes-fila{display:flex;justify-content:center;gap:1.1rem;margin-top:1rem;flex-wrap:wrap;}
+  .icono-red{
+    width:56px;height:56px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--blanco);border:1.5px dashed rgba(62,89,2,0.35);
+    color:var(--texto-suave);
+    opacity:.75;
+  }
+  .icono-red svg{width:22px;height:22px;stroke:currentColor;}
+  .proximamente{
+    display:inline-block;margin-top:1.1rem;font-size:.85rem;font-weight:700;
+    color:var(--texto-suave);letter-spacing:.04em;
+    background:var(--crema-suave);padding:.5em 1.1em;border-radius:100px;
+  }
+
+  /* ---------- CONTACTO / FOOTER ---------- */
+  footer{
+    background:linear-gradient(160deg, var(--teja), var(--naranja));
+    color:var(--blanco);
+    padding:5rem 0 2.4rem;
+  }
+  .contacto-grid{
+    display:grid;grid-template-columns:1fr;gap:2.4rem;align-items:end;
+  }
+  @media(min-width:820px){.contacto-grid{grid-template-columns:1.2fr 1fr;}}
+  footer h2{color:var(--blanco);font-size:clamp(1.9rem,3.6vw,2.6rem);max-width:12ch;}
+  footer p.lead{color:#FDECE0;max-width:40ch;margin-top:.9rem;font-size:1rem;}
+  .contacto-tarjetas{display:flex;flex-direction:column;gap:1rem;}
+  .contacto-item{
+    background:rgba(255,254,249,0.12);
+    border:1px solid rgba(255,254,249,0.25);
+    border-radius:16px;padding:1.1rem 1.3rem;
+    display:flex;align-items:center;gap:.9rem;
+    transition:background .25s ease, transform .25s ease;
+  }
+  .contacto-item:hover{background:rgba(255,254,249,0.22);transform:translateY(-2px);}
+  .contacto-item .icono-c{
+    width:40px;height:40px;border-radius:12px;background:rgba(255,254,249,0.22);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .contacto-item .icono-c svg{width:19px;height:19px;stroke:var(--blanco);}
+  .contacto-item b{display:block;font-size:.95rem;}
+  .contacto-item span{font-size:.82rem;color:#FDECE0;}
+  .linea-final{
+    border-top:1px solid rgba(255,254,249,0.25);
+    margin-top:3.4rem;padding-top:1.6rem;
+    display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;
+    font-size:.82rem;color:#FDECE0;
+  }
+
+  /* ---------- REVEAL ---------- */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.visible{opacity:1;transform:none;}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="contenedor nav-inner">
+    <a href="#inicio" class="logo"><img src="images/logo.jpeg" alt="Sabor y Sazón" class="logo-img">Sabor y Sazón</a>
+    <nav class="nav-links">
+      <a href="#inicio">Inicio</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#nosotros">Sobre nosotros</a>
+      <a href="#cobertura">Cobertura</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a href="#contacto" class="boton boton-solido nav-cta">Escríbenos</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+  </div>
+  <div class="contenedor" id="menu-movil">
+    <a href="#inicio">Inicio</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#nosotros">Sobre nosotros</a>
+    <a href="#cobertura">Cobertura</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section id="inicio" class="hero">
+  <svg class="salpicaduras" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+    <circle cx="90" cy="120" r="6" fill="#B9BF11" opacity=".7"/>
+    <circle cx="180" cy="60" r="3" fill="#F29F05" opacity=".8"/>
+    <circle cx="1080" cy="90" r="7" fill="#F25C05" opacity=".6"/>
+    <circle cx="1000" cy="200" r="4" fill="#B9BF11" opacity=".7"/>
+    <circle cx="1140" cy="320" r="5" fill="#F29F05" opacity=".7"/>
+    <circle cx="60" cy="420" r="4" fill="#F25C05" opacity=".6"/>
+    <circle cx="130" cy="650" r="6" fill="#B9BF11" opacity=".6"/>
+    <circle cx="1050" cy="600" r="4" fill="#F29F05" opacity=".7"/>
+    <circle cx="1160" cy="700" r="7" fill="#F25C05" opacity=".55"/>
+    <circle cx="40" cy="740" r="3" fill="#B9BF11" opacity=".7"/>
+    <circle cx="900" cy="40" r="3" fill="#F25C05" opacity=".6"/>
+    <circle cx="700" cy="30" r="4" fill="#B9BF11" opacity=".5"/>
+  </svg>
+
+  <div class="contenedor hero-grid">
+    <div>
+      <span class="eyebrow">Comida saludable · 100% en línea</span>
+      <h1>Llevamos el sabor a tus mejores momentos</h1>
+      <p class="lead">Sabor y Sazón es un negocio de comida saludable sin local físico: llevamos alimentación a tu empresa y a tus eventos, con toda la sazón y todos los protocolos de bioseguridad.</p>
+      <div class="hero-acciones">
+        <a href="#servicios" class="boton boton-solido">Ver servicios</a>
+        <a href="#contacto" class="boton boton-fantasma">Escríbenos</a>
+      </div>
+      <div class="hero-datos">
+        <div class="hero-dato"><b>100%</b><span>Venta en línea</span></div>
+        <div class="hero-dato"><b>24/7</b><span>Refrigerio empresarial</span></div>
+        <div class="hero-dato"><b>Bogotá</b><span>y la Sabana</span></div>
+      </div>
+    </div>
+
+    <div class="sello-wrap">
+      <img src="images/logo.jpeg" alt="Logo Sabor y Sazón — comida saludable y rica" class="sello">
+    </div>
+  </div>
+</section>
+
+<!-- ================= NUESTRA COMIDA ================= -->
+<section id="comida">
+  <div class="contenedor">
+    <div class="encabezado-seccion reveal">
+      <span class="eyebrow">Lo que preparamos</span>
+      <h2>Nuestra comida</h2>
+      <p>Bowls, wraps, jugos, snacks y refrigerios saludables, listos para tu empresa o tu evento — en empaques biodegradables.</p>
+    </div>
+
+    <div class="galeria-comida reveal">
+      <div class="item-galeria item-grande">
+        <img src="images/flatlay-empaques.jpeg" alt="Bowls, wraps y jugos saludables Sabor y Sazón en empaques biodegradables" loading="lazy">
+        <span class="etiqueta">Come saludable, vive mejor</span>
+      </div>
+      <div class="item-galeria item-mediano">
+        <img src="images/bowl-pollo.jpeg" alt="Bowl saludable con pollo a la parrilla, quinoa y vegetales" loading="lazy">
+        <span class="etiqueta">Bowls nutritivos</span>
+      </div>
+      <div class="item-galeria">
+        <img src="images/picoteo-saludable.jpeg" alt="Caja de picoteo saludable con hummus, galletas de semillas y frutos secos" loading="lazy">
+        <span class="etiqueta">Picoteo saludable</span>
+      </div>
+      <div class="item-galeria">
+        <img src="images/refrigerios-variedad.jpeg" alt="Variedad de refrigerios saludables: frutas, muffins, wraps y jugos" loading="lazy">
+        <span class="etiqueta">Refrigerios</span>
+      </div>
+      <div class="item-galeria item-mediano">
+        <img src="images/mesa-eventos.jpeg" alt="Mesa de snacks saludables Sabor y Sazón para eventos empresariales" loading="lazy">
+        <span class="etiqueta">Mesas para eventos</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICIOS ================= -->
+<section id="servicios">
+  <div class="contenedor">
+    <div class="encabezado-seccion reveal">
+      <span class="eyebrow">Qué hacemos</span>
+      <h2>Nuestros servicios</h2>
+      <p>Cuatro formas de llevar comida saludable a tu empresa y a tus eventos, sin depender de un local físico.</p>
+    </div>
+
+    <div class="grid-servicios">
+      <div class="tarjeta-servicio reveal" style="--acento:var(--verde-lima)">
+        <span class="num">01</span>
+        <div class="icono">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2v7a2 2 0 0 0 2 2v11M6 2v20M10 2v9M14 2c-2 0-2 5 0 9v11"/>
+          </svg>
+        </div>
+        <h3>Venta por internet</h3>
+        <p>Pide tu comida saludable en línea, sin necesidad de visitarnos: nosotros la llevamos hasta ti.</p>
+      </div>
+
+      <div class="tarjeta-servicio reveal" style="--acento:var(--dorado)">
+        <span class="num">02</span>
+        <div class="icono">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/>
+          </svg>
+        </div>
+        <h3>Eventos empresariales</h3>
+        <p>Planeamos y servimos la alimentación de tus eventos corporativos, de principio a fin.</p>
+      </div>
+
+      <div class="tarjeta-servicio reveal" style="--acento:var(--naranja)">
+        <span class="num">03</span>
+        <div class="icono">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2l3 6 6 .9-4.5 4.3 1 6.2L12 16.5 6.5 19.4l1-6.2L3 8.9 9 8z"/>
+          </svg>
+        </div>
+        <h3>Cubrimiento de eventos</h3>
+        <p>Cubrimos todo tipo de eventos con servicio de alimentación, sin importar el tamaño o el formato.</p>
+      </div>
+
+      <div class="tarjeta-servicio reveal" style="--acento:var(--teja)">
+        <span class="num">04</span>
+        <div class="icono">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2 3 6v6c0 5 4 8.5 9 10 5-1.5 9-5 9-10V6z"/><path d="M9 12l2 2 4-4"/>
+          </svg>
+        </div>
+        <h3>Refrigerio empresarial 24/7</h3>
+        <p>Refrigerio diario para los empleados de tu empresa, disponible todos los días, con protocolos de bioseguridad en la manipulación de alimentos.</p>
+      </div>
+    </div>
+
+    <div class="banner-presupuesto reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      <p>Nos acomodamos a <span>tu presupuesto</span>, dándote calidad y buen servicio.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SOBRE NOSOTROS ================= -->
+<section id="nosotros">
+  <div class="contenedor nosotros-grid">
+    <div class="nosotros-texto reveal">
+      <span class="eyebrow">Sobre nosotros</span>
+      <h2 style="margin:.6rem 0 1.2rem;font-size:clamp(1.9rem,3.2vw,2.4rem);">Sazón sin local físico, presencia en cada empresa</h2>
+      <p>Sabor y Sazón nace para llevar comida saludable a donde esté nuestro cliente: no tenemos un local al cual llegar, tenemos una operación pensada para llegar nosotros a ti.</p>
+      <p>Trabajamos con altos estándares de manipulación de alimentos y protocolos de bioseguridad en cada pedido, cada evento y cada refrigerio que entregamos, para que tu empresa reciba comida saludable con total confianza.</p>
+      <div class="stats-mini">
+        <div class="stat-mini"><b>Sin local</b><span>Operación 100% en línea</span></div>
+        <div class="stat-mini"><b>Bioseguridad</b><span>En cada entrega</span></div>
+        <div class="stat-mini"><b>24/7</b><span>Refrigerio empresarial</span></div>
+      </div>
+    </div>
+
+    <svg class="ilustracion-plato reveal" viewBox="0 0 420 420">
+      <circle cx="210" cy="210" r="180" fill="#FFFEF9" stroke="#3E5902" stroke-opacity=".12" stroke-width="2"/>
+      <circle cx="210" cy="210" r="132" fill="none" stroke="#B9BF11" stroke-width="2" stroke-dasharray="3 9"/>
+      <circle cx="210" cy="210" r="90" fill="#F29F05" opacity=".16"/>
+      <g stroke-linecap="round">
+        <path d="M150 190c0-30 22-50 52-50" fill="none" stroke="#3E5902" stroke-width="8"/>
+        <path d="M270 190c0-30 -22-50 -52-50" fill="none" stroke="#F25C05" stroke-width="8"/>
+        <circle cx="150" cy="230" r="10" fill="#BF2604"/>
+        <circle cx="270" cy="230" r="10" fill="#B9BF11"/>
+        <circle cx="210" cy="255" r="12" fill="#F29F05"/>
+      </g>
+      <circle cx="90" cy="90" r="5" fill="#F25C05"/>
+      <circle cx="335" cy="105" r="4" fill="#B9BF11"/>
+      <circle cx="345" cy="320" r="6" fill="#F29F05"/>
+      <circle cx="75" cy="330" r="4" fill="#BF2604"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ================= COBERTURA ================= -->
+<section id="cobertura">
+  <div class="contenedor cobertura-grid">
+    <div class="reveal">
+      <div class="encabezado-seccion" style="margin-bottom:1.2rem;">
+        <span class="eyebrow" style="color:var(--dorado);">Dónde estamos</span>
+        <h2>Cobertura en Bogotá y la Sabana</h2>
+        <p>Llegamos a empresas y eventos dentro de Bogotá y los municipios de la Sabana.</p>
+      </div>
+      <div class="lista-municipios">
+        <span class="chip-municipio">Bogotá</span>
+        <span class="chip-municipio">Chía</span>
+        <span class="chip-municipio">Cota</span>
+        <span class="chip-municipio">Cajicá</span>
+        <span class="chip-municipio">Zipaquirá</span>
+        <span class="chip-municipio">Mosquera</span>
+        <span class="chip-municipio">Funza</span>
+        <span class="chip-municipio">Madrid</span>
+      </div>
+    </div>
+
+    <svg class="mapa-abstracto reveal" viewBox="0 0 400 400">
+      <circle cx="200" cy="200" r="170" fill="none" stroke="#B9BF11" stroke-opacity=".3" stroke-width="1.4"/>
+      <circle cx="200" cy="200" r="120" fill="none" stroke="#B9BF11" stroke-opacity=".25" stroke-width="1.4"/>
+      <circle cx="200" cy="200" r="14" fill="#F29F05"/>
+      <text x="200" y="242" text-anchor="middle" font-family="Manrope,sans-serif" font-size="12" fill="#EAF0CE" font-weight="700">BOGOTÁ</text>
+
+      <g font-family="Manrope,sans-serif" font-size="10" fill="#D8E0AE">
+        <circle cx="150" cy="90" r="6" fill="#F25C05"/><text x="150" y="76" text-anchor="middle">CHÍA</text>
+        <circle cx="110" cy="120" r="5" fill="#B9BF11"/><text x="95" y="108" text-anchor="middle">COTA</text>
+        <circle cx="185" cy="60" r="5" fill="#BF2604"/><text x="185" y="46" text-anchor="middle">CAJICÁ</text>
+        <circle cx="150" cy="40" r="5" fill="#F29F05"/><text x="150" y="26" text-anchor="middle">ZIPAQUIRÁ</text>
+        <circle cx="90" cy="230" r="5" fill="#B9BF11"/><text x="72" y="245" text-anchor="middle">MOSQUERA</text>
+        <circle cx="70" cy="270" r="5" fill="#F25C05"/><text x="60" y="288" text-anchor="middle">FUNZA</text>
+        <circle cx="90" cy="310" r="5" fill="#F29F05"/><text x="80" y="328" text-anchor="middle">MADRID</text>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ================= REDES ================= -->
+<section id="redes">
+  <div class="contenedor">
+    <div class="encabezado-seccion reveal">
+      <span class="eyebrow">Comunidad</span>
+      <h2>Redes sociales</h2>
+      <p>Muy pronto estaremos en redes sociales para compartir contigo todo lo que preparamos.</p>
+    </div>
+    <div class="redes-fila reveal">
+      <span class="icono-red" title="Instagram próximamente">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+      </span>
+      <span class="icono-red" title="TikTok próximamente">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M14 3v10.5a3.5 3.5 0 1 1-3-3.46"/><path d="M14 3c.5 3 2.5 5 5 5.3"/></svg>
+      </span>
+      <span class="icono-red" title="Facebook próximamente">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M15 8h-2a2 2 0 0 0-2 2v10M9 13h6"/><circle cx="12" cy="12" r="9"/></svg>
+      </span>
+    </div>
+    <span class="proximamente">Próximamente</span>
+  </div>
+</section>
+
+<!-- ================= CONTACTO / FOOTER ================= -->
+<footer id="contacto">
+  <div class="contenedor contacto-grid">
+    <div class="reveal">
+      <span class="eyebrow" style="color:#FFFEF9;">Hablemos</span>
+      <h2 style="margin-top:.6rem;">Lleva Sabor y Sazón a tu empresa</h2>
+      <p class="lead">Escríbenos y arma con nosotros el servicio de alimentación, evento o refrigerio que tu empresa necesita.</p>
+    </div>
+
+    <div class="contacto-tarjetas reveal">
+      <a class="contacto-item" href="mailto:3491616.pyme1@gmail.com">
+        <span class="icono-c"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+        <span><b>3491616.pyme1@gmail.com</b><span>Escríbenos un correo</span></span>
+      </a>
+      <a class="contacto-item" href="tel:+573222066339">
+        <span class="icono-c"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2Z"/></svg></span>
+        <span><b>322 206 6339</b><span>Llámanos o escríbenos</span></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="contenedor linea-final">
+    <span>© 2026 Sabor y Sazón — Comida saludable sin local físico.</span>
+    <span>Proyecto SENA · Bogotá y la Sabana</span>
+  </div>
+</footer>
+
+<script>
+  // Menú móvil
+  const menuBtn = document.getElementById('menuBtn');
+  const menuMovil = document.getElementById('menu-movil');
+  menuBtn.addEventListener('click', () => menuMovil.classList.toggle('abierto'));
+  menuMovil.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menuMovil.classList.remove('abierto')));
+
+  // Animación al hacer scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
