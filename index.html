@@ -276,6 +276,29 @@
   .stat-mini span{font-size:.82rem;color:var(--texto-suave);}
   .ilustracion-plato{width:100%;max-width:420px;margin-inline:auto;}
 
+  /* ---------- MISIÓN Y VISIÓN ---------- */
+  #mision-vision{background:var(--crema);}
+  .mv-grid{
+    display:grid;grid-template-columns:1fr;gap:1.6rem;
+  }
+  @media(min-width:800px){.mv-grid{grid-template-columns:1fr 1fr;}}
+  .tarjeta-mv{
+    background:var(--blanco);
+    border-radius:var(--radio);
+    padding:2.4rem 2.1rem;
+    box-shadow:var(--sombra);
+    border-top:5px solid var(--acento-mv, var(--dorado));
+  }
+  .tarjeta-mv .icono-mv{
+    width:56px;height:56px;border-radius:16px;
+    display:flex;align-items:center;justify-content:center;
+    background:color-mix(in srgb, var(--acento-mv, var(--dorado)) 16%, white);
+    margin-bottom:1.3rem;
+  }
+  .tarjeta-mv .icono-mv svg{width:28px;height:28px;stroke:var(--acento-mv, var(--dorado));}
+  .tarjeta-mv h3{font-size:1.35rem;margin-bottom:1rem;}
+  .tarjeta-mv p{color:var(--texto-suave);font-size:.98rem;}
+
   /* ---------- COBERTURA ---------- */
   #cobertura{
     background:var(--verde-oscuro);
@@ -542,6 +565,38 @@
       <circle cx="345" cy="320" r="6" fill="#F29F05"/>
       <circle cx="75" cy="330" r="4" fill="#BF2604"/>
     </svg>
+  </div>
+</section>
+
+<!-- ================= MISIÓN Y VISIÓN ================= -->
+<section id="mision-vision">
+  <div class="contenedor">
+    <div class="encabezado-seccion reveal">
+      <span class="eyebrow">Nuestro propósito</span>
+      <h2>Misión y visión</h2>
+    </div>
+
+    <div class="mv-grid">
+      <div class="tarjeta-mv reveal" style="--acento-mv:var(--naranja)">
+        <div class="icono-mv">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2 3 7v6c0 5 4 8.5 9 9 5-.5 9-4 9-9V7z"/><path d="M9 12l2 2 4-4"/>
+          </svg>
+        </div>
+        <h3>Misión</h3>
+        <p>Somos una empresa colombiana que tiene como objetivo brindar servicios de catering con alimentos de excelente calidad, preparados con responsabilidad, higiene y dedicación, ofreciendo una atención personalizada que satisfaga las necesidades de nuestros clientes en cada evento.</p>
+      </div>
+
+      <div class="tarjeta-mv reveal" style="--acento-mv:var(--verde-lima)">
+        <div class="icono-mv">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1.5 12S5 5 12 5s10.5 7 10.5 7-3.5 7-10.5 7S1.5 12 1.5 12Z"/><circle cx="12" cy="12" r="3.2"/>
+          </svg>
+        </div>
+        <h3>Visión</h3>
+        <p>Ser una empresa líder en servicios de catering en Bogotá para el año 2031, reconocida por la calidad de sus productos, la innovación, el excelente servicio al cliente y el compromiso con el bienestar de nuestros colaboradores.</p>
+      </div>
+    </div>
   </div>
 </section>
 
