@@ -299,6 +299,31 @@
   .tarjeta-mv h3{font-size:1.35rem;margin-bottom:1rem;}
   .tarjeta-mv p{color:var(--texto-suave);font-size:.98rem;}
 
+  .valores-fila{
+    display:flex;flex-wrap:wrap;gap:.9rem;
+    margin-top:2rem;justify-content:center;
+  }
+  .chip-valor{
+    display:flex;align-items:center;gap:.55rem;
+    background:var(--blanco);
+    border-radius:100px;
+    padding:.7em 1.3em;
+    font-weight:700;font-size:.92rem;
+    box-shadow:var(--sombra);
+  }
+  .chip-valor .punto-valor{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+
+  /* ---------- ORGANIGRAMA / MAPA DE PROCESOS ---------- */
+  .seccion-imagen{background:var(--crema-suave);}
+  .seccion-imagen.alterna{background:var(--blanco);}
+  .marco-imagen{
+    border-radius:var(--radio);
+    overflow:hidden;
+    box-shadow:var(--sombra);
+    background:var(--blanco);
+  }
+  .marco-imagen img{width:100%;display:block;}
+
   /* ---------- COBERTURA ---------- */
   #cobertura{
     background:var(--verde-oscuro);
@@ -370,6 +395,18 @@
     font-size:.82rem;color:#FDECE0;
   }
 
+  /* ---------- WHATSAPP FLOTANTE ---------- */
+  .whatsapp-flotante{
+    position:fixed;right:1.4rem;bottom:1.4rem;z-index:60;
+    width:60px;height:60px;border-radius:50%;
+    background:#25D366;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 14px 28px -8px rgba(0,0,0,0.4);
+    transition:transform .25s ease;
+  }
+  .whatsapp-flotante:hover{transform:scale(1.08);}
+  .whatsapp-flotante svg{width:30px;height:30px;stroke:white;}
+
   /* ---------- REVEAL ---------- */
   .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease, transform .7s ease;}
   .reveal.visible{opacity:1;transform:none;}
@@ -419,7 +456,7 @@
   <div class="contenedor hero-grid">
     <div>
       <span class="eyebrow">Comida saludable · 100% en línea</span>
-      <h1>Sabores Que Conectan </h1>
+      <h1>Llevamos el sabor a tus mejores momentos</h1>
       <p class="lead">Sabor y Sazón es un negocio de comida saludable sin local físico: llevamos alimentación a tu empresa y a tus eventos, con toda la sazón y todos los protocolos de bioseguridad.</p>
       <div class="hero-acciones">
         <a href="#servicios" class="boton boton-solido">Ver servicios</a>
@@ -584,7 +621,7 @@
           </svg>
         </div>
         <h3>Misión</h3>
-        <p>Somos una empresa de Bogotá que tiene como objetivo brindar servicios de catering con alimentos de excelente calidad, preparados con responsabilidad, higiene y dedicación, ofreciendo una atención personalizada que satisfaga las necesidades de nuestros clientes en cada evento.</p>
+        <p>Somos una empresa colombiana que tiene como objetivo brindar servicios de catering con alimentos de excelente calidad, preparados con responsabilidad, higiene y dedicación, ofreciendo una atención personalizada que satisfaga las necesidades de nuestros clientes en cada evento.</p>
       </div>
 
       <div class="tarjeta-mv reveal" style="--acento-mv:var(--verde-lima)">
@@ -594,8 +631,45 @@
           </svg>
         </div>
         <h3>Visión</h3>
-        <p>Ser una empresa líder en servicios de catering en Cundinamarca para el año 2031, reconocida por la calidad de sus productos, la innovación, el excelente servicio al cliente y el compromiso con el bienestar de nuestros colaboradores.</p>
+        <p>Ser una empresa líder en servicios de catering en Bogotá para el año 2031, reconocida por la calidad de sus productos, la innovación, el excelente servicio al cliente y el compromiso con el bienestar de nuestros colaboradores.</p>
       </div>
+    </div>
+
+    <div class="valores-fila reveal">
+      <span class="chip-valor"><span class="punto-valor" style="background:var(--verde-oscuro)"></span>Calidad</span>
+      <span class="chip-valor"><span class="punto-valor" style="background:var(--verde-lima)"></span>Higiene</span>
+      <span class="chip-valor"><span class="punto-valor" style="background:var(--dorado)"></span>Puntualidad</span>
+      <span class="chip-valor"><span class="punto-valor" style="background:var(--naranja)"></span>Servicio</span>
+      <span class="chip-valor"><span class="punto-valor" style="background:var(--teja)"></span>Innovación</span>
+      <span class="chip-valor"><span class="punto-valor" style="background:var(--verde-oscuro)"></span>Pasión</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ORGANIGRAMA ================= -->
+<section id="organigrama" class="seccion-imagen">
+  <div class="contenedor">
+    <div class="encabezado-seccion reveal">
+      <span class="eyebrow">Nuestro equipo</span>
+      <h2>Organigrama</h2>
+      <p>Así está organizado el equipo de Sabor y Sazón, desde la gerencia hasta cada área de apoyo.</p>
+    </div>
+    <div class="marco-imagen reveal">
+      <img src="organigrama.jpeg" alt="Organigrama de Sabor y Sazón: Gerente, Jefe administrativo, Jefe comercial, Jefe de cocina, Jefe de Talento Humano y Especialista en SST, con sus respectivos auxiliares" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ================= MAPA DE PROCESOS ================= -->
+<section id="procesos" class="seccion-imagen alterna">
+  <div class="contenedor">
+    <div class="encabezado-seccion reveal">
+      <span class="eyebrow">Cómo trabajamos</span>
+      <h2>Mapa de procesos</h2>
+      <p>Procesos estratégicos, misionales y de apoyo que garantizan calidad e inocuidad en cada entrega.</p>
+    </div>
+    <div class="marco-imagen reveal">
+      <img src="mapa-procesos.jpeg" alt="Mapa de procesos de Sabor y Sazón: procesos estratégicos, procesos misionales de gestión de pedidos, compras, producción, control de calidad, empaque, entrega y servicio postventa, y procesos de apoyo" loading="lazy">
     </div>
   </div>
 </section>
@@ -673,13 +747,17 @@
     </div>
 
     <div class="contacto-tarjetas reveal">
+      <a class="contacto-item" href="https://wa.me/573125788604?text=Hola%20Sabor%20y%20Saz%C3%B3n%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n" target="_blank" rel="noopener" style="background:rgba(185,191,17,0.22);border-color:rgba(185,191,17,0.5);">
+        <span class="icono-c"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 21l1.6-4.8A8.5 8.5 0 1 1 8 20.4z"/><path d="M8.5 9.5c0 3 2.5 5.5 5.5 5.5.6 0 1-.6.7-1.1l-.9-1.4c-.2-.3-.6-.4-.9-.2l-.7.4a4 4 0 0 1-2-2l.4-.7c.2-.3.1-.7-.2-.9L9 8.3c-.5-.3-1.1.1-1.1.7Z"/></svg></span>
+        <span><b>Chatea por WhatsApp</b><span>Respuesta rápida</span></span>
+      </a>
       <a class="contacto-item" href="mailto:3491616.pyme1@gmail.com">
         <span class="icono-c"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
         <span><b>3491616.pyme1@gmail.com</b><span>Escríbenos un correo</span></span>
       </a>
-      <a class="contacto-item" href="tel:+573222066339">
+      <a class="contacto-item" href="tel:+573125788604">
         <span class="icono-c"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2Z"/></svg></span>
-        <span><b>322 206 6339</b><span>Llámanos o escríbenos</span></span>
+        <span><b>312 578 8604</b><span>Llámanos o escríbenos</span></span>
       </a>
     </div>
   </div>
@@ -689,6 +767,10 @@
     <span>Proyecto SENA · Bogotá y la Sabana</span>
   </div>
 </footer>
+
+<a class="whatsapp-flotante" href="https://wa.me/573125788604?text=Hola%20Sabor%20y%20Saz%C3%B3n%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n" target="_blank" rel="noopener" aria-label="Chatea por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 21l1.6-4.8A8.5 8.5 0 1 1 8 20.4z"/><path d="M8.5 9.5c0 3 2.5 5.5 5.5 5.5.6 0 1-.6.7-1.1l-.9-1.4c-.2-.3-.6-.4-.9-.2l-.7.4a4 4 0 0 1-2-2l.4-.7c.2-.3.1-.7-.2-.9L9 8.3c-.5-.3-1.1.1-1.1.7Z"/></svg>
+</a>
 
 <script>
   // Menú móvil
