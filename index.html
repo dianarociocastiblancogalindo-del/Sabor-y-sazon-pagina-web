@@ -324,6 +324,93 @@
   }
   .marco-imagen img{width:100%;display:block;}
 
+  /* ---------- ÁRBOL INTERACTIVO (ORGANIGRAMA) ---------- */
+  .organigrama-interactivo{
+    display:flex;justify-content:center;
+    overflow-x:auto;padding:1rem .5rem 2rem;
+  }
+  .arbol-org, .arbol-org ul{
+    list-style:none;margin:0;padding-top:0;
+    display:flex;justify-content:center;
+  }
+  .arbol-org ul{padding-top:28px;position:relative;}
+  .arbol-org li{
+    list-style:none;position:relative;padding:28px 14px 0;
+    display:flex;flex-direction:column;align-items:center;
+    text-align:center;
+  }
+  .arbol-org > li{padding-top:0;}
+  .arbol-org ul li::before, .arbol-org ul li::after{
+    content:'';position:absolute;top:0;right:50%;
+    border-top:2px solid #C9CFA0;width:50%;height:20px;
+  }
+  .arbol-org ul li::after{right:auto;left:50%;border-left:2px solid #C9CFA0;}
+  .arbol-org ul li:only-child::after, .arbol-org ul li:only-child::before{display:none;}
+  .arbol-org ul li:only-child{padding-top:0;}
+  .arbol-org ul li:first-child::before, .arbol-org ul li:last-child::after{border:none;}
+  .arbol-org ul li:last-child::before{border-right:2px solid #C9CFA0;border-radius:0 6px 0 0;}
+  .arbol-org ul li:first-child::after{border-radius:6px 0 0 0;}
+  .arbol-org ul ul::before{
+    content:'';position:absolute;top:0;left:50%;
+    border-left:2px solid #C9CFA0;width:0;height:20px;
+  }
+  .arbol-org ul.oculto{display:none;}
+
+  .nodo-org{
+    display:inline-flex;align-items:center;gap:.4rem;
+    border:none;cursor:pointer;font-family:'Manrope',sans-serif;
+    font-weight:700;font-size:.84rem;color:white;
+    padding:.7em 1.05em;border-radius:12px;
+    box-shadow:var(--sombra);white-space:nowrap;
+    transition:transform .2s ease;
+  }
+  button.nodo-org:hover{transform:translateY(-2px);}
+  .nodo-org.tiene-hijos::after{content:'+';margin-left:.25em;font-size:1rem;line-height:1;}
+  .nodo-org.tiene-hijos.activo::after{content:'–';}
+  span.nodo-org{cursor:default;}
+
+  .nodo-raiz{background:#2B3403;font-size:.92rem;padding:.85em 1.5em;}
+  .nodo-admin{background:var(--verde-oscuro);}
+  .nodo-comercial{background:var(--naranja);}
+  .nodo-cocina{background:var(--dorado);color:var(--texto);}
+  .nodo-talento{background:var(--verde-lima);color:var(--texto);}
+  .nodo-sst{background:var(--teja);}
+
+  .nodo-chico{font-size:.76rem !important;font-weight:600 !important;padding:.5em .85em !important;box-shadow:none !important;}
+  .nodo-admin-claro{background:color-mix(in srgb, var(--verde-oscuro) 16%, white) !important;color:var(--verde-oscuro) !important;}
+  .nodo-comercial-claro{background:color-mix(in srgb, var(--naranja) 16%, white) !important;color:#a34204 !important;}
+  .nodo-cocina-claro{background:color-mix(in srgb, var(--dorado) 20%, white) !important;color:#8a5c02 !important;}
+  .nodo-talento-claro{background:color-mix(in srgb, var(--verde-lima) 22%, white) !important;color:#5c6108 !important;}
+
+  @media(max-width:900px){.arbol-org{transform:scale(.82);transform-origin:top center;}}
+  @media(max-width:640px){.arbol-org{transform:scale(.68);}}
+
+  .ayuda-arbol{text-align:center;font-size:.85rem;color:var(--texto-suave);margin-top:-.5rem;}
+
+  /* ---------- ACORDEÓN (MAPA DE PROCESOS) ---------- */
+  .procesos-acordeon{display:flex;flex-direction:column;gap:1.1rem;}
+  .categoria-proceso{
+    background:var(--blanco);border-radius:var(--radio);
+    box-shadow:var(--sombra);overflow:hidden;
+    border-left:6px solid var(--acento-proc, var(--dorado));
+  }
+  .proceso-header{
+    width:100%;display:flex;align-items:center;gap:.9rem;
+    background:none;border:none;cursor:pointer;
+    padding:1.3rem 1.6rem;text-align:left;
+    font-family:'Fraunces',serif;font-weight:600;font-size:1.1rem;color:var(--verde-oscuro);
+  }
+  .proceso-numero{
+    width:34px;height:34px;border-radius:50%;
+    background:var(--acento-proc,var(--dorado));color:white;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Manrope',sans-serif;font-weight:800;font-size:.92rem;flex-shrink:0;
+  }
+  .proceso-header::after{content:'▾';margin-left:auto;transition:transform .3s ease;color:var(--acento-proc,var(--dorado));font-size:1.1rem;}
+  .proceso-header.activo::after{transform:rotate(180deg);}
+  .proceso-contenido{padding:0 1.6rem 1.9rem;}
+  .proceso-contenido.oculto{display:none;}
+
   /* ---------- COBERTURA ---------- */
   #cobertura{
     background:var(--verde-oscuro);
@@ -456,7 +543,7 @@
   <div class="contenedor hero-grid">
     <div>
       <span class="eyebrow">Comida saludable · 100% en línea</span>
-      <h1>Llevamos el sabor a tus mejores momentos</h1>
+      <h1>Sabores que conectan</h1>
       <p class="lead">Sabor y Sazón es un negocio de comida saludable sin local físico: llevamos alimentación a tu empresa y a tus eventos, con toda la sazón y todos los protocolos de bioseguridad.</p>
       <div class="hero-acciones">
         <a href="#servicios" class="boton boton-solido">Ver servicios</a>
@@ -652,11 +739,57 @@
     <div class="encabezado-seccion reveal">
       <span class="eyebrow">Nuestro equipo</span>
       <h2>Organigrama</h2>
-      <p>Así está organizado el equipo de Sabor y Sazón, desde la gerencia hasta cada área de apoyo.</p>
+      <p>Así está organizado el equipo de Sabor y Sazón. Haz clic en cada cargo para desplegar su equipo.</p>
     </div>
-    <div class="marco-imagen reveal">
-      <img src="organigrama.jpeg" alt="Organigrama de Sabor y Sazón: Gerente, Jefe administrativo, Jefe comercial, Jefe de cocina, Jefe de Talento Humano y Especialista en SST, con sus respectivos auxiliares" loading="lazy">
+
+    <div class="organigrama-interactivo reveal">
+      <ul class="arbol-org">
+        <li>
+          <button class="nodo-org nodo-raiz tiene-hijos" data-toggle="nivel-jefes">Gerente</button>
+          <ul id="nivel-jefes" class="oculto">
+            <li>
+              <button class="nodo-org nodo-admin tiene-hijos" data-toggle="hijos-admin">Jefe administrativo</button>
+              <ul id="hijos-admin" class="oculto">
+                <li><span class="nodo-org nodo-chico nodo-admin-claro">Auxiliar Financiero</span></li>
+                <li><span class="nodo-org nodo-chico nodo-admin-claro">Auxiliar contable</span></li>
+              </ul>
+            </li>
+            <li>
+              <button class="nodo-org nodo-comercial tiene-hijos" data-toggle="hijos-comercial">Jefe comercial</button>
+              <ul id="hijos-comercial" class="oculto">
+                <li><span class="nodo-org nodo-chico nodo-comercial-claro">Vendedor</span></li>
+                <li><span class="nodo-org nodo-chico nodo-comercial-claro">Asesor de servicio</span></li>
+                <li><span class="nodo-org nodo-chico nodo-comercial-claro">Asesor comercial</span></li>
+                <li><span class="nodo-org nodo-chico nodo-comercial-claro">Auxiliar logístico</span></li>
+                <li><span class="nodo-org nodo-chico nodo-comercial-claro">Domiciliario</span></li>
+              </ul>
+            </li>
+            <li>
+              <button class="nodo-org nodo-cocina tiene-hijos" data-toggle="hijos-cocina">Jefe de cocina</button>
+              <ul id="hijos-cocina" class="oculto">
+                <li><span class="nodo-org nodo-chico nodo-cocina-claro">Cocinero</span></li>
+                <li><span class="nodo-org nodo-chico nodo-cocina-claro">Gestor de calidad</span></li>
+                <li><span class="nodo-org nodo-chico nodo-cocina-claro">Auxiliar de cocina</span></li>
+                <li><span class="nodo-org nodo-chico nodo-cocina-claro">Mesero</span></li>
+              </ul>
+            </li>
+            <li>
+              <button class="nodo-org nodo-talento tiene-hijos" data-toggle="hijos-talento">Jefe de Talento Humano</button>
+              <ul id="hijos-talento" class="oculto">
+                <li><span class="nodo-org nodo-chico nodo-talento-claro">Auxiliar de bienestar</span></li>
+                <li><span class="nodo-org nodo-chico nodo-talento-claro">Auxiliar de selección</span></li>
+                <li><span class="nodo-org nodo-chico nodo-talento-claro">Auxiliar de capacitación</span></li>
+                <li><span class="nodo-org nodo-chico nodo-talento-claro">Auxiliar de reclutamiento</span></li>
+              </ul>
+            </li>
+            <li>
+              <span class="nodo-org nodo-sst">Especialista en SST</span>
+            </li>
+          </ul>
+        </li>
+      </ul>
     </div>
+    <p class="ayuda-arbol reveal">Toca "Gerente" y cada jefatura para ver el equipo a su cargo.</p>
   </div>
 </section>
 
@@ -666,10 +799,109 @@
     <div class="encabezado-seccion reveal">
       <span class="eyebrow">Cómo trabajamos</span>
       <h2>Mapa de procesos</h2>
-      <p>Procesos estratégicos, misionales y de apoyo que garantizan calidad e inocuidad en cada entrega.</p>
+      <p>Procesos estratégicos, misionales y de apoyo que garantizan calidad e inocuidad en cada entrega. Haz clic en cada grupo para desplegarlo.</p>
     </div>
-    <div class="marco-imagen reveal">
-      <img src="mapa-procesos.jpeg" alt="Mapa de procesos de Sabor y Sazón: procesos estratégicos, procesos misionales de gestión de pedidos, compras, producción, control de calidad, empaque, entrega y servicio postventa, y procesos de apoyo" loading="lazy">
+
+    <div class="procesos-acordeon reveal">
+
+      <div class="categoria-proceso" style="--acento-proc:var(--verde-lima)">
+        <button class="proceso-header" data-toggle="proc-estrategicos">
+          <span class="proceso-numero">1</span><span>Procesos estratégicos</span>
+        </button>
+        <div id="proc-estrategicos" class="proceso-contenido oculto">
+          <div class="grid-servicios">
+            <div class="tarjeta-servicio" style="--acento:var(--verde-lima)">
+              <span class="num">1.1</span><h3>Gestión Estratégica</h3>
+              <p>Planeación, objetivos, políticas y mejora continua.</p>
+            </div>
+            <div class="tarjeta-servicio" style="--acento:var(--verde-lima)">
+              <span class="num">1.2</span><h3>Gestión Comercial y de Mercadeo</h3>
+              <p>Estudio de mercado, promoción, publicidad y gestión de clientes.</p>
+            </div>
+            <div class="tarjeta-servicio" style="--acento:var(--verde-lima)">
+              <span class="num">1.3</span><h3>Gestión de Alianzas y Proveedores</h3>
+              <p>Selección y evaluación de proveedores, negociación y seguimiento.</p>
+            </div>
+            <div class="tarjeta-servicio" style="--acento:var(--verde-lima)">
+              <span class="num">1.4</span><h3>Gestión Financiera y Contable</h3>
+              <p>Presupuesto, costos, contabilidad, análisis financiero y tesorería.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="categoria-proceso" style="--acento-proc:var(--naranja)">
+        <button class="proceso-header" data-toggle="proc-misionales">
+          <span class="proceso-numero">2</span><span>Procesos misionales (clave)</span>
+        </button>
+        <div id="proc-misionales" class="proceso-contenido oculto">
+          <div class="grid-servicios">
+            <div class="tarjeta-servicio" style="--acento:var(--naranja)">
+              <span class="num">2.1</span><h3>Gestión de Pedidos y Cotizaciones</h3>
+              <p>Recepción de solicitudes, cotización y confirmación.</p>
+            </div>
+            <div class="tarjeta-servicio" style="--acento:var(--naranja)">
+              <span class="num">2.2</span><h3>Compras e Insumos</h3>
+              <p>Adquisición de materias primas e insumos necesarios.</p>
+            </div>
+            <div class="tarjeta-servicio" style="--acento:var(--naranja)">
+              <span class="num">2.3</span><h3>Producción de Alimentos</h3>
+              <p>Preparación de alimentos con estándares de calidad e higiene.</p>
+            </div>
+            <div class="tarjeta-servicio" style="--acento:var(--naranja)">
+              <span class="num">2.4</span><h3>Control de Calidad e Inocuidad</h3>
+              <p>Aseguramiento de la calidad e inocuidad en todas las etapas: recepción, preparación, empaque y entrega.</p>
+            </div>
+            <div class="tarjeta-servicio" style="--acento:var(--naranja)">
+              <span class="num">2.5</span><h3>Empaque y Alistamiento</h3>
+              <p>Empaque seguro, identificación y alistamiento de pedidos según estándares.</p>
+            </div>
+            <div class="tarjeta-servicio" style="--acento:var(--naranja)">
+              <span class="num">2.6</span><h3>Entrega y Servicio</h3>
+              <p>Transporte, entrega puntual y montaje (si aplica).</p>
+            </div>
+            <div class="tarjeta-servicio" style="--acento:var(--naranja)">
+              <span class="num">2.7</span><h3>Servicio Postventa</h3>
+              <p>Retroalimentación, atención de novedades y fidelización.</p>
+            </div>
+          </div>
+          <div class="banner-presupuesto" style="margin-top:1.7rem;background:linear-gradient(120deg, var(--naranja), var(--teja));">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--verde-lima)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v6c0 5 4 8.5 9 9 5-.5 9-4 9-9V7z"/><path d="M9 12l2 2 4-4"/></svg>
+            <p>Calidad e inocuidad garantizada en todo el proceso: <span>cumplimiento de normatividad sanitaria, buenas prácticas de manufactura, trazabilidad y mejora continua.</span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="categoria-proceso" style="--acento-proc:var(--dorado)">
+        <button class="proceso-header" data-toggle="proc-apoyo">
+          <span class="proceso-numero">3</span><span>Procesos de apoyo</span>
+        </button>
+        <div id="proc-apoyo" class="proceso-contenido oculto">
+          <div class="grid-servicios">
+            <div class="tarjeta-servicio" style="--acento:var(--dorado)">
+              <span class="num">3.1</span><h3>Gestión del Talento Humano</h3>
+              <p>Selección, capacitación, bienestar, evaluación y desarrollo del personal.</p>
+            </div>
+            <div class="tarjeta-servicio" style="--acento:var(--dorado)">
+              <span class="num">3.2</span><h3>Mantenimiento e Infraestructura</h3>
+              <p>Mantenimiento de equipos, instalaciones y vehículos para asegurar su óptimo funcionamiento.</p>
+            </div>
+            <div class="tarjeta-servicio" style="--acento:var(--dorado)">
+              <span class="num">3.3</span><h3>Gestión Administrativa</h3>
+              <p>Documentación, archivo, compras administrativas, servicios generales y TIC.</p>
+            </div>
+            <div class="tarjeta-servicio" style="--acento:var(--dorado)">
+              <span class="num">3.4</span><h3>Gestión Ambiental y Sostenibilidad</h3>
+              <p>Uso responsable de recursos, manejo de residuos y empaques ecológicos.</p>
+            </div>
+            <div class="tarjeta-servicio" style="--acento:var(--dorado)">
+              <span class="num">3.5</span><h3>Seguridad y Salud en el Trabajo</h3>
+              <p>Promoción de ambientes seguros, prevención de riesgos y cumplimiento legal en SST.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -778,6 +1010,17 @@
   const menuMovil = document.getElementById('menu-movil');
   menuBtn.addEventListener('click', () => menuMovil.classList.toggle('abierto'));
   menuMovil.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menuMovil.classList.remove('abierto')));
+
+  // Organigrama y mapa de procesos interactivos (clic para desplegar/ocultar)
+  document.querySelectorAll('[data-toggle]').forEach(el => {
+    el.addEventListener('click', () => {
+      const destino = document.getElementById(el.dataset.toggle);
+      if (!destino) return;
+      const estabaOculto = destino.classList.contains('oculto');
+      destino.classList.toggle('oculto');
+      el.classList.toggle('activo', estabaOculto);
+    });
+  });
 
   // Animación al hacer scroll
   const observer = new IntersectionObserver((entries) => {
