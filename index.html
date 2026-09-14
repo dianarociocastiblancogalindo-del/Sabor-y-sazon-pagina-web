@@ -283,7 +283,7 @@
     margin-top:1rem;
   }
   @media(min-width:640px){.grid-equipo{grid-template-columns:repeat(3,1fr);}}
-  @media(min-width:960px){.grid-equipo{grid-template-columns:repeat(5,1fr);}}
+  @media(min-width:960px){.grid-equipo{grid-template-columns:repeat(6,1fr);}}
   .tarjeta-integrante{text-align:center;}
   .foto-integrante{
     width:100%;aspect-ratio:1/1;border-radius:50%;overflow:hidden;
@@ -318,19 +318,28 @@
   .tarjeta-mv h3{font-size:1.35rem;margin-bottom:1rem;}
   .tarjeta-mv p{color:var(--texto-suave);font-size:.98rem;}
 
-  .valores-fila{
-    display:flex;flex-wrap:wrap;gap:.9rem;
-    margin-top:2rem;justify-content:center;
+  .valores-encabezado{text-align:center;margin-top:3rem;margin-bottom:1.6rem;}
+  .valores-encabezado h3{
+    font-family:'Fraunces',serif;color:var(--verde-oscuro);
+    font-size:1.5rem;margin-top:.5rem;
   }
-  .chip-valor{
-    display:flex;align-items:center;gap:.55rem;
-    background:var(--blanco);
-    border-radius:100px;
-    padding:.7em 1.3em;
-    font-weight:700;font-size:.92rem;
-    box-shadow:var(--sombra);
+  .grid-valores{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:1.1rem;
   }
-  .chip-valor .punto-valor{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+  @media(min-width:700px){.grid-valores{grid-template-columns:repeat(4,1fr);}}
+  .tarjeta-valor{
+    background:var(--blanco);border-radius:16px;padding:1.5rem 1.2rem;
+    box-shadow:var(--sombra);text-align:center;
+    border-top:4px solid var(--acento-valor, var(--dorado));
+  }
+  .tarjeta-valor .icono-valor{
+    width:44px;height:44px;border-radius:12px;margin:0 auto .8rem;
+    display:flex;align-items:center;justify-content:center;
+    background:color-mix(in srgb, var(--acento-valor, var(--dorado)) 16%, white);
+  }
+  .tarjeta-valor .icono-valor svg{width:21px;height:21px;stroke:var(--acento-valor, var(--dorado));}
+  .tarjeta-valor h4{font-family:'Fraunces',serif;font-size:1.02rem;color:var(--verde-oscuro);margin-bottom:.45rem;}
+  .tarjeta-valor p{font-size:.83rem;color:var(--texto-suave);}
 
   /* ---------- ORGANIGRAMA / MAPA DE PROCESOS ---------- */
   .seccion-imagen{background:var(--crema-suave);}
@@ -529,6 +538,16 @@
     0%,100%{transform:translateY(0) rotate(-3deg);}
     50%{transform:translateY(-9px) rotate(3deg);}
   }
+  .fideo-svg{
+    position:absolute;left:50%;bottom:100%;
+    transform:translateX(-50%);
+    width:24px;overflow:visible;
+    filter:drop-shadow(0 2px 3px rgba(0,0,0,0.2));
+  }
+  .fideo-svg path{
+    fill:none;stroke:#F0C24B;stroke-width:5.5;stroke-linecap:round;
+  }
+  @media(max-width:700px){.fideo-svg{width:16px;}.fideo-svg path{stroke-width:4;}}
   @media(max-width:700px){.mascota-flotante{width:52px;left:5px;}}
   @media (prefers-reduced-motion: reduce){
     .mascota-flotante img{animation:none;}
@@ -729,13 +748,52 @@
       </div>
     </div>
 
-    <div class="valores-fila reveal">
-      <span class="chip-valor"><span class="punto-valor" style="background:var(--verde-oscuro)"></span>Calidad</span>
-      <span class="chip-valor"><span class="punto-valor" style="background:var(--verde-lima)"></span>Higiene</span>
-      <span class="chip-valor"><span class="punto-valor" style="background:var(--dorado)"></span>Puntualidad</span>
-      <span class="chip-valor"><span class="punto-valor" style="background:var(--naranja)"></span>Servicio</span>
-      <span class="chip-valor"><span class="punto-valor" style="background:var(--teja)"></span>Innovación</span>
-      <span class="chip-valor"><span class="punto-valor" style="background:var(--verde-oscuro)"></span>Pasión</span>
+    <div class="valores-encabezado reveal">
+      <span class="eyebrow" style="justify-content:center;">Nuestros principios</span>
+      <h3>Valores organizacionales</h3>
+    </div>
+
+    <div class="grid-valores reveal">
+      <div class="tarjeta-valor" style="--acento-valor:var(--verde-oscuro)">
+        <div class="icono-valor"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <h4>Calidad</h4>
+        <p>Nos comprometemos a ofrecer alimentos y servicios de alta calidad, cuidando cada detalle desde la selección de los ingredientes hasta la entrega final.</p>
+      </div>
+      <div class="tarjeta-valor" style="--acento-valor:var(--naranja)">
+        <div class="icono-valor"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12h1.5a2 2 0 0 1 2 2 2 2 0 0 0 2 2H16M2 12h3M19 12h3M6 8l2 2-2 2M18 8l-2 2 2 2"/></svg></div>
+        <h4>Responsabilidad</h4>
+        <p>Cumplimos nuestros compromisos con clientes, colaboradores y proveedores, actuando con puntualidad, organización y compromiso.</p>
+      </div>
+      <div class="tarjeta-valor" style="--acento-valor:var(--verde-lima)">
+        <div class="icono-valor"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2s7 7.5 7 12a7 7 0 0 1-14 0c0-4.5 7-12 7-12Z"/></svg></div>
+        <h4>Inocuidad y seguridad alimentaria</h4>
+        <p>Garantizamos buenas prácticas de manipulación, higiene y preparación para proteger la salud y bienestar de nuestros clientes.</p>
+      </div>
+      <div class="tarjeta-valor" style="--acento-valor:var(--teja)">
+        <div class="icono-valor"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9Z"/></svg></div>
+        <h4>Servicio</h4>
+        <p>Atendemos a nuestros clientes con amabilidad, respeto y disposición, buscando superar sus expectativas.</p>
+      </div>
+      <div class="tarjeta-valor" style="--acento-valor:var(--dorado)">
+        <div class="icono-valor"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.5" cy="8" r="3"/><path d="M2.5 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M16.5 6.5a3 3 0 0 1 0 5.8M21.5 20c0-2.8-2-5-4.5-5.7"/></svg></div>
+        <h4>Trabajo en equipo</h4>
+        <p>Promovemos la colaboración, comunicación y apoyo entre nuestros colaboradores para alcanzar objetivos comunes.</p>
+      </div>
+      <div class="tarjeta-valor" style="--acento-valor:var(--verde-oscuro)">
+        <div class="icono-valor"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a6 6 0 0 0-3.5 10.9c.5.4.8 1 .8 1.6V16h5.4v-1.5c0-.6.3-1.2.8-1.6A6 6 0 0 0 12 2Z"/></svg></div>
+        <h4>Innovación</h4>
+        <p>Buscamos nuevas ideas, sabores, presentaciones y alternativas que nos permitan mejorar continuamente nuestra oferta.</p>
+      </div>
+      <div class="tarjeta-valor" style="--acento-valor:var(--verde-lima)">
+        <div class="icono-valor"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c-4-2.5-8-6-8-11a8 8 0 0 1 16 0c0 5-4 8.5-8 11Z"/><path d="M12 8v7M9 11h6"/></svg></div>
+        <h4>Sostenibilidad</h4>
+        <p>Promovemos el uso responsable de los recursos, la reducción de residuos y el uso de empaques más amigables con el ambiente.</p>
+      </div>
+      <div class="tarjeta-valor" style="--acento-valor:var(--naranja)">
+        <div class="icono-valor"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></div>
+        <h4>Honestidad e integridad</h4>
+        <p>Actuamos con transparencia, ética y coherencia en nuestras relaciones con clientes, colaboradores y proveedores.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -989,6 +1047,10 @@
         <div class="foto-integrante"><img src="equipo-5.jpeg" alt="Integrante del equipo Sabor y Sazón" loading="lazy"></div>
         <p class="nombre-integrante">Nombre</p>
       </div>
+      <div class="tarjeta-integrante">
+        <div class="foto-integrante"><img src="equipo-6.jpeg" alt="Integrante del equipo Sabor y Sazón" loading="lazy"></div>
+        <p class="nombre-integrante">Nombre</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1052,6 +1114,9 @@
 </a>
 
 <div class="mascota-flotante" id="mascotaFlotante" aria-hidden="true">
+  <svg class="fideo-svg" id="fideoSvg" viewBox="0 0 24 1" preserveAspectRatio="none">
+    <path id="fideoPath" d=""/>
+  </svg>
   <img src="mascota.png" alt="">
 </div>
 
@@ -1086,6 +1151,26 @@
 
   // Mascota que se desplaza por el costado según el scroll
   const mascota = document.getElementById('mascotaFlotante');
+  const fideoSvg = document.getElementById('fideoSvg');
+  const fideoPath = document.getElementById('fideoPath');
+
+  function trazoFideo(alto){
+    const seguro = Math.max(alto, 1);
+    const amplitud = 6.5;
+    const paso = 22;
+    let d = `M 12 ${seguro}`;
+    let y = seguro;
+    let dir = 1;
+    while (y > 0){
+      const siguienteY = Math.max(y - paso, 0);
+      const medioY = y - (y - siguienteY) / 2;
+      d += ` Q ${12 + dir * amplitud} ${medioY} 12 ${siguienteY}`;
+      dir *= -1;
+      y = siguienteY;
+    }
+    return d;
+  }
+
   if (mascota) {
     let objetivo = 120;
     let actual = 120;
@@ -1100,6 +1185,12 @@
     function animar(){
       actual += (objetivo - actual) * 0.15;
       mascota.style.top = actual + 'px';
+      if (fideoSvg && fideoPath) {
+        const alto = Math.max(actual, 1);
+        fideoSvg.setAttribute('viewBox', `0 0 24 ${alto}`);
+        fideoSvg.setAttribute('height', alto);
+        fideoPath.setAttribute('d', trazoFideo(alto));
+      }
       requestAnimationFrame(animar);
     }
     window.addEventListener('scroll', calcularObjetivo, { passive: true });
