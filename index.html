@@ -354,8 +354,16 @@
 
   /* ---------- ÁRBOL INTERACTIVO (ORGANIGRAMA) ---------- */
   .organigrama-interactivo{
-    display:flex;justify-content:center;
-    overflow-x:auto;padding:1rem .5rem 2rem;
+    display:block;
+    overflow-x:auto;overflow-y:visible;
+    padding:1rem .5rem 2rem;
+    -webkit-overflow-scrolling:touch;
+  }
+  .arbol-org{
+    width:max-content;
+    min-width:max-content;
+    flex-shrink:0;
+    margin-inline:auto !important;
   }
   .arbol-org, .arbol-org ul{
     list-style:none;margin:0;padding-top:0;
@@ -410,8 +418,12 @@
   .nodo-cocina-claro{background:color-mix(in srgb, var(--dorado) 20%, white) !important;color:#8a5c02 !important;}
   .nodo-talento-claro{background:color-mix(in srgb, var(--verde-lima) 22%, white) !important;color:#5c6108 !important;}
 
-  @media(max-width:900px){.arbol-org{transform:scale(.82);transform-origin:top center;}}
-  @media(max-width:640px){.arbol-org{transform:scale(.68);}}
+  @media(max-width:900px){
+    .arbol-org{transform:scale(.82);transform-origin:top left;margin-left:0 !important;}
+  }
+  @media(max-width:640px){
+    .arbol-org{transform:scale(.68);transform-origin:top left;margin-left:0 !important;}
+  }
 
   .ayuda-arbol{text-align:center;font-size:.85rem;color:var(--texto-suave);margin-top:-.5rem;}
 
@@ -882,7 +894,7 @@
         </li>
       </ul>
     </div>
-    <p class="ayuda-arbol reveal">Toca "Gerente" y cada jefatura para ver el equipo a su cargo. Las funciones aparecen debajo de cada cargo.</p>
+    <p class="ayuda-arbol reveal">Toca "Gerente" y cada jefatura para ver el equipo a su cargo. Si el organigrama es muy ancho, desliza horizontalmente para ver los cargos de los extremos.</p>
   </div>
 </section>
 
