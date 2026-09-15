@@ -557,7 +557,35 @@
   /* ---------- REVEAL ---------- */
   .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease, transform .7s ease;}
   .reveal.visible{opacity:1;transform:none;}
-</style>
+
+  /* ---------- DESCRIPCIONES DEL ORGANIGRAMA ---------- */
+  .descripcion-cargo{
+    display:block;
+    width:190px;
+    margin-top:.45rem;
+    padding:.55rem .7rem;
+    background:rgba(255,254,249,.92);
+    border:1px solid rgba(62,89,2,.12);
+    border-radius:10px;
+    color:var(--texto-suave);
+    font-size:.68rem;
+    line-height:1.4;
+    font-weight:500;
+    box-shadow:0 5px 14px -10px rgba(62,89,2,.35);
+  }
+  .arbol-org > li > ul > li > .descripcion-cargo{
+    width:210px;
+    font-size:.7rem;
+  }
+  @media(max-width:900px){
+    .descripcion-cargo{width:165px;font-size:.62rem;}
+    .arbol-org > li > ul > li > .descripcion-cargo{width:180px;}
+  }
+  @media(max-width:640px){
+    .descripcion-cargo{width:150px;font-size:.58rem;}
+    .arbol-org > li > ul > li > .descripcion-cargo{width:160px;}
+  }
+  </style>
 </head>
 <body>
 
@@ -813,48 +841,48 @@
           <button class="nodo-org nodo-raiz tiene-hijos" data-toggle="nivel-jefes">Gerente</button>
           <ul id="nivel-jefes" class="oculto">
             <li>
-              <button class="nodo-org nodo-admin tiene-hijos" data-toggle="hijos-admin">Jefe administrativo</button>
+              <button class="nodo-org nodo-admin tiene-hijos" data-toggle="hijos-admin">Jefe administrativo</button><span class="descripcion-cargo">Supervisa y coordina las operaciones diarias de la empresa, gestionando recursos, personal y procesos para garantizar la eficiencia y el cumplimiento de los objetivos.</span>
               <ul id="hijos-admin" class="oculto">
-                <li><span class="nodo-org nodo-chico nodo-admin-claro">Auxiliar Financiero</span></li>
-                <li><span class="nodo-org nodo-chico nodo-admin-claro">Auxiliar contable</span></li>
+                <li><span class="nodo-org nodo-chico nodo-admin-claro">Auxiliar Financiero</span><span class="descripcion-cargo">Brinda soporte en actividades contables y financieras, gestionando cuentas, reportes y operaciones para garantizar el correcto flujo de recursos de la empresa.</span></li>
+                <li><span class="nodo-org nodo-chico nodo-admin-claro">Auxiliar contable</span><span class="descripcion-cargo">Apoya al contador en la gestión de registros financieros, conciliaciones, reportes y tareas administrativas para garantizar la correcta administración de los recursos económicos.</span></li>
               </ul>
             </li>
             <li>
-              <button class="nodo-org nodo-comercial tiene-hijos" data-toggle="hijos-comercial">Jefe comercial</button>
+              <button class="nodo-org nodo-comercial tiene-hijos" data-toggle="hijos-comercial">Jefe comercial</button><span class="descripcion-cargo">Identifica y desarrolla mercados, define segmentos y canales de distribución, y posiciona los productos de la empresa.</span>
               <ul id="hijos-comercial" class="oculto">
-                <li><span class="nodo-org nodo-chico nodo-comercial-claro">Vendedor</span></li>
-                <li><span class="nodo-org nodo-chico nodo-comercial-claro">Asesor de servicio</span></li>
-                <li><span class="nodo-org nodo-chico nodo-comercial-claro">Asesor comercial</span></li>
-                <li><span class="nodo-org nodo-chico nodo-comercial-claro">Auxiliar logístico</span></li>
-                <li><span class="nodo-org nodo-chico nodo-comercial-claro">Domiciliario</span></li>
+                <li><span class="nodo-org nodo-chico nodo-comercial-claro">Vendedor</span><span class="descripcion-cargo">Entiende las necesidades del cliente, comunica el valor único de los productos o servicios y cierra acuerdos de manera efectiva.</span></li>
+                <li><span class="nodo-org nodo-chico nodo-comercial-claro">Asesor de servicio</span><span class="descripcion-cargo">Atiende, orienta y resuelve las consultas y problemas de los clientes, asegurando su satisfacción y fidelización.</span></li>
+                <li><span class="nodo-org nodo-chico nodo-comercial-claro">Asesor comercial</span><span class="descripcion-cargo">Promueve productos o servicios, capta clientes, negocia ventas y mantiene relaciones duraderas para asegurar la satisfacción y fidelización.</span></li>
+                <li><span class="nodo-org nodo-chico nodo-comercial-claro">Auxiliar logístico</span><span class="descripcion-cargo">Coordina, controla y optimiza el flujo de mercancías dentro de la cadena de suministro, asegurando que los productos lleguen a su destino de manera eficiente y segura.</span></li>
+                <li><span class="nodo-org nodo-chico nodo-comercial-claro">Domiciliario</span><span class="descripcion-cargo">Organiza la ruta de transporte según el pedido y la ubicación del domicilio, y distribuye correspondencia y encomiendas para cumplir con la entrega inmediata.</span></li>
               </ul>
             </li>
             <li>
-              <button class="nodo-org nodo-cocina tiene-hijos" data-toggle="hijos-cocina">Jefe de cocina</button>
+              <button class="nodo-org nodo-cocina tiene-hijos" data-toggle="hijos-cocina">Jefe de cocina</button><span class="descripcion-cargo">Planifica, organiza y supervisa las actividades de la cocina, asegurando la calidad de los platos, la gestión del equipo y el control de costos.</span>
               <ul id="hijos-cocina" class="oculto">
-                <li><span class="nodo-org nodo-chico nodo-cocina-claro">Cocinero</span></li>
-                <li><span class="nodo-org nodo-chico nodo-cocina-claro">Gestor de calidad</span></li>
-                <li><span class="nodo-org nodo-chico nodo-cocina-claro">Auxiliar de cocina</span></li>
-                <li><span class="nodo-org nodo-chico nodo-cocina-claro">Mesero</span></li>
+                <li><span class="nodo-org nodo-chico nodo-cocina-claro">Cocinero</span><span class="descripcion-cargo">Prepara y cocina una amplia variedad de alimentos, incluyendo el desarrollo de menús, la selección de ingredientes y la presentación de platos.</span></li>
+                <li><span class="nodo-org nodo-chico nodo-cocina-claro">Gestor de calidad</span><span class="descripcion-cargo">Se encarga de que los procesos y productos de la empresa cumplan con las normas ISO relacionadas con la gestión de la calidad, especialmente la familia ISO 9000.</span></li>
+                <li><span class="nodo-org nodo-chico nodo-cocina-claro">Auxiliar de cocina</span><span class="descripcion-cargo">Prepara ingredientes, mantiene la limpieza y apoya al chef en la elaboración de los platos, asegurando el buen funcionamiento de la cocina.</span></li>
+                <li><span class="nodo-org nodo-chico nodo-cocina-claro">Mesero</span><span class="descripcion-cargo">Atiende a los clientes, toma y sirve pedidos, mantiene el orden del comedor y garantiza una experiencia gastronómica satisfactoria.</span></li>
               </ul>
             </li>
             <li>
-              <button class="nodo-org nodo-talento tiene-hijos" data-toggle="hijos-talento">Jefe de Talento Humano</button>
+              <button class="nodo-org nodo-talento tiene-hijos" data-toggle="hijos-talento">Jefe de Talento Humano</button><span class="descripcion-cargo">Gestiona, desarrolla y potencia el capital humano de la organización, alineando las necesidades del personal con los objetivos estratégicos de la empresa.</span>
               <ul id="hijos-talento" class="oculto">
-                <li><span class="nodo-org nodo-chico nodo-talento-claro">Auxiliar de bienestar</span></li>
-                <li><span class="nodo-org nodo-chico nodo-talento-claro">Auxiliar de selección</span></li>
-                <li><span class="nodo-org nodo-chico nodo-talento-claro">Auxiliar de capacitación</span></li>
-                <li><span class="nodo-org nodo-chico nodo-talento-claro">Auxiliar de reclutamiento</span></li>
+                <li><span class="nodo-org nodo-chico nodo-talento-claro">Auxiliar de bienestar</span><span class="descripcion-cargo">Apoya la logística, administración y ejecución de actividades de bienestar, salud y cultura organizacional, incluyendo eventos, registros, materiales y atención a colaboradores.</span></li>
+                <li><span class="nodo-org nodo-chico nodo-talento-claro">Auxiliar de selección</span><span class="descripcion-cargo">Apoya los procesos de reclutamiento y selección de personal, gestionando tareas administrativas y colaborando en la evaluación de candidatos.</span></li>
+                <li><span class="nodo-org nodo-chico nodo-talento-claro">Auxiliar de capacitación</span><span class="descripcion-cargo">Apoya la planificación, ejecución y evaluación de programas de formación para el desarrollo del talento dentro de la organización.</span></li>
+                <li><span class="nodo-org nodo-chico nodo-talento-claro">Auxiliar de reclutamiento</span><span class="descripcion-cargo">Apoya el proceso de selección de personal, desde la publicación de ofertas hasta la coordinación de entrevistas y la gestión de bases de datos de candidatos.</span></li>
               </ul>
             </li>
             <li>
-              <span class="nodo-org nodo-sst">Especialista en SST</span>
+              <span class="nodo-org nodo-sst">Especialista en SST</span><span class="descripcion-cargo">Garantiza entornos laborales seguros, previene riesgos y asegura el cumplimiento de la normativa de seguridad y salud en el trabajo.</span>
             </li>
           </ul>
         </li>
       </ul>
     </div>
-    <p class="ayuda-arbol reveal">Toca "Gerente" y cada jefatura para ver el equipo a su cargo.</p>
+    <p class="ayuda-arbol reveal">Toca "Gerente" y cada jefatura para ver el equipo a su cargo. Las funciones aparecen debajo de cada cargo.</p>
   </div>
 </section>
 
@@ -1029,27 +1057,27 @@
     <div class="grid-equipo reveal">
       <div class="tarjeta-integrante">
         <div class="foto-integrante"><img src="equipo-1.jpeg" alt="Integrante del equipo Sabor y Sazón" loading="lazy"></div>
-        <p class="nombre-integrante">Paula Parra</p>
+        <p class="nombre-integrante">Nombre</p>
       </div>
       <div class="tarjeta-integrante">
         <div class="foto-integrante"><img src="equipo-2.jpeg" alt="Integrante del equipo Sabor y Sazón" loading="lazy"></div>
-        <p class="nombre-integrante">Diana Castiblanco</p>
+        <p class="nombre-integrante">Nombre</p>
       </div>
       <div class="tarjeta-integrante">
         <div class="foto-integrante"><img src="equipo-3.jpeg" alt="Integrante del equipo Sabor y Sazón" loading="lazy"></div>
-        <p class="nombre-integrante">Jessica Martinez</p>
+        <p class="nombre-integrante">Nombre</p>
       </div>
       <div class="tarjeta-integrante">
         <div class="foto-integrante"><img src="equipo-4.jpeg" alt="Integrante del equipo Sabor y Sazón" loading="lazy"></div>
-        <p class="nombre-integrante">Laura Ortegon</p>
+        <p class="nombre-integrante">Nombre</p>
       </div>
       <div class="tarjeta-integrante">
         <div class="foto-integrante"><img src="equipo-5.jpeg" alt="Integrante del equipo Sabor y Sazón" loading="lazy"></div>
-        <p class="nombre-integrante">Andrea Poveda</p>
+        <p class="nombre-integrante">Nombre</p>
       </div>
       <div class="tarjeta-integrante">
         <div class="foto-integrante"><img src="equipo-6.jpeg" alt="Integrante del equipo Sabor y Sazón" loading="lazy"></div>
-        <p class="nombre-integrante">Paula Torres</p>
+        <p class="nombre-integrante">Nombre</p>
       </div>
     </div>
   </div>
