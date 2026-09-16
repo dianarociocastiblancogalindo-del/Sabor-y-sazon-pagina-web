@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Organigrama y procesos — Sabor y Sazón S.A.S.</title>
+<meta name="description" content="Organigrama del equipo y mapa de procesos de Sabor y Sazón S.A.S.">
+<link rel="icon" type="image/jpeg" href="logo.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="contenedor nav-inner">
+    <a href="index.html" class="logo"><img src="logo.jpeg" alt="Sabor y Sazón S.A.S." class="logo-img">Sabor y Sazón S.A.S.</a>
+    <nav class="nav-links">
+      <a href="index.html">Inicio</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="quienes-somos.html">Quiénes somos</a>
+      <a href="organigrama.html" class="actual">Organigrama</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+    <a href="contacto.html" class="boton boton-solido nav-cta">Escríbenos</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+  </div>
+  <div class="contenedor" id="menu-movil">
+    <a href="index.html">Inicio</a>
+    <a href="servicios.html">Servicios</a>
+    <a href="quienes-somos.html">Quiénes somos</a>
+    <a href="organigrama.html" class="actual">Organigrama</a>
+    <a href="contacto.html">Contacto</a>
+  </div>
+</header>
+
+<section id="organigrama" class="seccion-imagen">
+  <div class="contenedor">
+    <div class="encabezado-seccion reveal">
+      <span class="eyebrow">Nuestro equipo</span>
+      <h2>Organigrama</h2>
+      <p>Así está organizado el equipo de Sabor y Sazón S.A.S.. Haz clic en cada cargo para desplegar su equipo.</p>
+    </div>
+
+    <div class="organigrama-interactivo reveal">
+      <ul class="arbol-org">
+        <li>
+          <button class="nodo-org nodo-raiz tiene-hijos" data-toggle="nivel-jefes">Gerente</button>
+          <ul id="nivel-jefes" class="oculto">
+            <li>
+              <button class="nodo-org nodo-admin tiene-hijos" data-toggle="hijos-admin">Jefe administrativo</button>
+              <ul id="hijos-admin" class="oculto">
+                <li><span class="nodo-org nodo-chico nodo-admin-claro">Auxiliar Financiero</span></li>
+                <li><span class="nodo-org nodo-chico nodo-admin-claro">Auxiliar contable</span></li>
+              </ul>
+            </li>
+            <li>
+              <button class="nodo-org nodo-comercial tiene-hijos" data-toggle="hijos-comercial">Jefe comercial</button>
+              <ul id="hijos-comercial" class="oculto">
+                <li><span class="nodo-org nodo-chico nodo-comercial-claro">Vendedor</span></li>
+                <li><span class="nodo-org nodo-chico nodo-comercial-claro">Asesor de servicio</span></li>
+                <li><span class="nodo-org nodo-chico nodo-comercial-claro">Asesor comercial</span></li>
+                <li><span class="nodo-org nodo-chico nodo-comercial-claro">Auxiliar logístico</span></li>
+                <li><span class="nodo-org nodo-chico nodo-comercial-claro">Domiciliario</span></li>
+              </ul>
+            </li>
+            <li>
+              <button class="nodo-org nodo-cocina tiene-hijos" data-toggle="hijos-cocina">Jefe de cocina</button>
+              <ul id="hijos-cocina" class="oculto">
+                <li><span class="nodo-org nodo-chico nodo-cocina-claro">Cocinero</span></li>
+                <li><span class="nodo-org nodo-chico nodo-cocina-claro">Gestor de calidad</span></li>
+                <li><span class="nodo-org nodo-chico nodo-cocina-claro">Auxiliar de cocina</span></li>
+                <li><span class="nodo-org nodo-chico nodo-cocina-claro">Mesero</span></li>
+              </ul>
+            </li>
+            <li>
+              <button class="nodo-org nodo-talento tiene-hijos" data-toggle="hijos-talento">Jefe de Talento Humano</button>
+              <ul id="hijos-talento" class="oculto">
+                <li><span class="nodo-org nodo-chico nodo-talento-claro">Auxiliar de bienestar</span></li>
+                <li><span class="nodo-org nodo-chico nodo-talento-claro">Auxiliar de selección</span></li>
+                <li><span class="nodo-org nodo-chico nodo-talento-claro">Auxiliar de capacitación</span></li>
+                <li><span class="nodo-org nodo-chico nodo-talento-claro">Auxiliar de reclutamiento</span></li>
+              </ul>
+            </li>
+            <li>
+              <span class="nodo-org nodo-sst">Especialista en SST</span>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <p class="ayuda-arbol reveal">Toca "Gerente" y cada jefatura para ver el equipo a su cargo.</p>
+  </div>
+</section>
+
+<section id="procesos" class="seccion-imagen alterna">
+  <div class="contenedor">
+    <div class="encabezado-seccion reveal">
+      <span class="eyebrow">Cómo trabajamos</span>
+      <h2>Mapa de procesos</h2>
+      <p>Procesos estratégicos, misionales y de apoyo que garantizan calidad e inocuidad en cada entrega. Haz clic en cada grupo para desplegarlo.</p>
+    </div>
+
+    <div class="procesos-acordeon reveal">
+
+      <div class="categoria-proceso" style="--acento-proc:var(--verde-lima)">
+        <button class="proceso-header" data-toggle="proc-estrategicos">
+          <span class="proceso-numero">1</span><span>Procesos estratégicos</span>
+        </button>
+        <div id="proc-estrategicos" class="proceso-contenido oculto">
+          <div class="grid-servicios">
+            <div class="tarjeta-servicio" style="--acento:var(--verde-lima)">
+              <span class="num">1.1</span><h3>Gestión Estratégica</h3>
+              <p>Planeación, objetivos, políticas y mejora continua.</p>
+            </div>
+            <div class="tarjeta-servicio" style="--acento:var(--verde-lima)">
+              <span class="num">1.2</span><h3>Gestión Comercial y de Mercadeo</h3>
+              <p>Estudio de mercado, promoción, publicidad y gestión de clientes.</p>
+            </div>
+            <div class="tarjeta-servicio" style="--acento:var(--verde-lima)">
+              <span class="num">1.3</span><h3>Gestión de Alianzas y Proveedores</h3>
+              <p>Selección y evaluación de proveedores, negociación y seguimiento.</p>
+            </div>
+            <div class="tarjeta-servicio" style="--acento:var(--verde-lima)">
+              <span class="num">1.4</span><h3>Gestión Financiera y Contable</h3>
+              <p>Presupuesto, costos, contabilidad, análisis financiero y tesorería.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="categoria-proceso" style="--acento-proc:var(--naranja)">
+        <button class="proceso-header" data-toggle="proc-misionales">
+          <span class="proceso-numero">2</span><span>Procesos misionales (clave)</span>
+        </button>
+        <div id="proc-misionales" class="proceso-contenido oculto">
+          <div class="grid-servicios">
+            <div class="tarjeta-servicio" style="--acento:var(--naranja)">
+              <span class="num">2.1</span><h3>Gestión de Pedidos y Cotizaciones</h3>
+              <p>Recepción de solicitudes, cotización y confirmación.</p>
+            </div>
+            <div class="tarjeta-servicio" style="--acento:var(--naranja)">
+              <span class="num">2.2</span><h3>Compras e Insumos</h3>
+              <p>Adquisición de materias primas e insumos necesarios.</p>
+            </div>
+            <div class="tarjeta-servicio" style="--acento:var(--naranja)">
+              <span class="num">2.3</span><h3>Producción de Alimentos</h3>
+              <p>Preparación de alimentos con estándares de calidad e higiene.</p>
+            </div>
+            <div class="tarjeta-servicio" style="--acento:var(--naranja)">
+              <span class="num">2.4</span><h3>Control de Calidad e Inocuidad</h3>
+              <p>Aseguramiento de la calidad e inocuidad en todas las etapas: recepción, preparación, empaque y entrega.</p>
+            </div>
+            <div class="tarjeta-servicio" style="--acento:var(--naranja)">
+              <span class="num">2.5</span><h3>Empaque y Alistamiento</h3>
+              <p>Empaque seguro, identificación y alistamiento de pedidos según estándares.</p>
+            </div>
+            <div class="tarjeta-servicio" style="--acento:var(--naranja)">
+              <span class="num">2.6</span><h3>Entrega y Servicio</h3>
+              <p>Transporte, entrega puntual y montaje (si aplica).</p>
+            </div>
+            <div class="tarjeta-servicio" style="--acento:var(--naranja)">
+              <span class="num">2.7</span><h3>Servicio Postventa</h3>
+              <p>Retroalimentación, atención de novedades y fidelización.</p>
+            </div>
+          </div>
+          <div class="banner-presupuesto" style="margin-top:1.7rem;background:linear-gradient(120deg, var(--naranja), var(--teja));">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--verde-lima)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v6c0 5 4 8.5 9 9 5-.5 9-4 9-9V7z"/><path d="M9 12l2 2 4-4"/></svg>
+            <p>Calidad e inocuidad garantizada en todo el proceso: <span>cumplimiento de normatividad sanitaria, buenas prácticas de manufactura, trazabilidad y mejora continua.</span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="categoria-proceso" style="--acento-proc:var(--dorado)">
+        <button class="proceso-header" data-toggle="proc-apoyo">
+          <span class="proceso-numero">3</span><span>Procesos de apoyo</span>
+        </button>
+        <div id="proc-apoyo" class="proceso-contenido oculto">
+          <div class="grid-servicios">
+            <div class="tarjeta-servicio" style="--acento:var(--dorado)">
+              <span class="num">3.1</span><h3>Gestión del Talento Humano</h3>
+              <p>Selección, capacitación, bienestar, evaluación y desarrollo del personal.</p>
+            </div>
+            <div class="tarjeta-servicio" style="--acento:var(--dorado)">
+              <span class="num">3.2</span><h3>Mantenimiento e Infraestructura</h3>
+              <p>Mantenimiento de equipos, instalaciones y vehículos para asegurar su óptimo funcionamiento.</p>
+            </div>
+            <div class="tarjeta-servicio" style="--acento:var(--dorado)">
+              <span class="num">3.3</span><h3>Gestión Administrativa</h3>
+              <p>Documentación, archivo, compras administrativas, servicios generales y TIC.</p>
+            </div>
+            <div class="tarjeta-servicio" style="--acento:var(--dorado)">
+              <span class="num">3.4</span><h3>Gestión Ambiental y Sostenibilidad</h3>
+              <p>Uso responsable de recursos, manejo de residuos y empaques ecológicos.</p>
+            </div>
+            <div class="tarjeta-servicio" style="--acento:var(--dorado)">
+              <span class="num">3.5</span><h3>Seguridad y Salud en el Trabajo</h3>
+              <p>Promoción de ambientes seguros, prevención de riesgos y cumplimiento legal en SST.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="pie-ligero">
+  <div class="contenedor pie-ligero-inner">
+    <a href="index.html" class="logo"><img src="logo.jpeg" alt="Sabor y Sazón S.A.S." class="logo-img">Sabor y Sazón S.A.S.</a>
+    <nav class="pie-ligero-links">
+      <a href="index.html">Inicio</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="quienes-somos.html">Quiénes somos</a>
+      <a href="organigrama.html">Organigrama</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+    <span class="pie-ligero-copy">© 2026 Sabor y Sazón S.A.S.</span>
+  </div>
+</footer>
+
+<a class="whatsapp-flotante" href="https://wa.me/573125788604?text=Hola%20Sabor%20y%20Saz%C3%B3n%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n" target="_blank" rel="noopener" aria-label="Chatea por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 21l1.6-4.8A8.5 8.5 0 1 1 8 20.4z"/><path d="M8.5 9.5c0 3 2.5 5.5 5.5 5.5.6 0 1-.6.7-1.1l-.9-1.4c-.2-.3-.6-.4-.9-.2l-.7.4a4 4 0 0 1-2-2l.4-.7c.2-.3.1-.7-.2-.9L9 8.3c-.5-.3-1.1.1-1.1.7Z"/></svg>
+</a>
+
+<div class="mascota-flotante" id="mascotaFlotante" aria-hidden="true">
+  <svg class="fideo-svg" id="fideoSvg" viewBox="0 0 24 1" preserveAspectRatio="none">
+    <path id="fideoPath" d=""/>
+  </svg>
+  <img src="mascota.png" alt="">
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
