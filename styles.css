@@ -595,6 +595,27 @@
 }
 .hero-servicios p.lead{color:#F7EFE0;font-size:1.05rem;max-width:52ch;margin-inline:auto;}
 
+/* ---------- HERO QUIÉNES SOMOS (imagen de fondo, no imagen suelta) ---------- */
+.hero-quienes{
+  position:relative;
+  background:
+    linear-gradient(160deg, rgba(43,52,3,0.85), rgba(62,89,2,0.65)),
+    url('equipo-real.jpg') center 25%/cover no-repeat;
+  color:var(--blanco);
+  padding:6.5rem 0 7.5rem;
+  text-align:center;
+}
+.hero-quienes .contenedor{max-width:680px;}
+.hero-quienes .eyebrow{color:var(--dorado);justify-content:center;}
+.hero-quienes .eyebrow::before{background:var(--dorado);}
+.hero-quienes h1{
+  color:var(--blanco);
+  font-size:clamp(2.1rem,4.6vw,3rem);
+  line-height:1.1;
+  margin:1rem 0 1.1rem;
+}
+.hero-quienes p.lead{color:#EAF0CE;font-size:1.05rem;max-width:52ch;margin-inline:auto;}
+
 /* ---------- PIE LIGERO (paginas sin footer de contacto) ---------- */
 .pie-ligero{
   background:var(--verde-oscuro);
