@@ -10,6 +10,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
 </head>
 <body>
 
@@ -126,22 +128,9 @@
       </div>
     </div>
 
-    <svg class="mapa-abstracto reveal" viewBox="0 0 400 400">
-      <circle cx="200" cy="200" r="170" fill="none" stroke="#B9BF11" stroke-opacity=".3" stroke-width="1.4"/>
-      <circle cx="200" cy="200" r="120" fill="none" stroke="#B9BF11" stroke-opacity=".25" stroke-width="1.4"/>
-      <circle cx="200" cy="200" r="14" fill="#F29F05"/>
-      <text x="200" y="242" text-anchor="middle" font-family="Manrope,sans-serif" font-size="12" fill="#EAF0CE" font-weight="700">BOGOTÁ</text>
-
-      <g font-family="Manrope,sans-serif" font-size="10" fill="#D8E0AE">
-        <circle cx="150" cy="90" r="6" fill="#F25C05"/><text x="150" y="76" text-anchor="middle">CHÍA</text>
-        <circle cx="110" cy="120" r="5" fill="#B9BF11"/><text x="95" y="108" text-anchor="middle">COTA</text>
-        <circle cx="185" cy="60" r="5" fill="#BF2604"/><text x="185" y="46" text-anchor="middle">CAJICÁ</text>
-        <circle cx="150" cy="40" r="5" fill="#F29F05"/><text x="150" y="26" text-anchor="middle">ZIPAQUIRÁ</text>
-        <circle cx="90" cy="230" r="5" fill="#B9BF11"/><text x="72" y="245" text-anchor="middle">MOSQUERA</text>
-        <circle cx="70" cy="270" r="5" fill="#F25C05"/><text x="60" y="288" text-anchor="middle">FUNZA</text>
-        <circle cx="90" cy="310" r="5" fill="#F29F05"/><text x="80" y="328" text-anchor="middle">MADRID</text>
-      </g>
-    </svg>
+    <div class="mapa-real reveal">
+      <div id="mapaCobertura"></div>
+    </div>
   </div>
 </section>
 
@@ -171,6 +160,43 @@
 </div>
 
 <script src="script.js"></script>
+
+<script>
+  // Mapa de cobertura (OpenStreetMap + Leaflet, sin necesidad de API key)
+  const elMapa = document.getElementById('mapaCobertura');
+  if (elMapa && window.L) {
+    const mapa = L.map('mapaCobertura', { scrollWheelZoom: false }).setView([4.83, -74.08], 10);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      maxZoom: 18
+    }).addTo(mapa);
+
+    const iconoSazon = L.divIcon({
+      className: 'pin-cobertura',
+      html: '<span></span>',
+      iconSize: [18, 18],
+      iconAnchor: [9, 9]
+    });
+
+    const lugares = [
+      { nombre: "Bogotá",    lat: 4.7110, lng: -74.0721 },
+      { nombre: "Chía",      lat: 4.8615, lng: -74.0316 },
+      { nombre: "Cota",      lat: 4.8090, lng: -74.1003 },
+      { nombre: "Cajicá",    lat: 4.9186, lng: -74.0257 },
+      { nombre: "Zipaquirá", lat: 5.0209, lng: -74.0035 },
+      { nombre: "Mosquera",  lat: 4.7059, lng: -74.2302 },
+      { nombre: "Funza",     lat: 4.7147, lng: -74.2131 },
+      { nombre: "Madrid",    lat: 4.7328, lng: -74.2661 }
+    ];
+
+    lugares.forEach(lugar => {
+      L.marker([lugar.lat, lugar.lng], { icon: iconoSazon })
+        .addTo(mapa)
+        .bindPopup(`<strong>${lugar.nombre}</strong><br>Zona de cobertura`);
+    });
+  }
+</script>
 
 </body>
 </html>
