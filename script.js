@@ -76,3 +76,35 @@
     actual = objetivo;
     requestAnimationFrame(animar);
   }
+
+// Formulario PQRS: arma el mensaje y lo envía por WhatsApp (sitio estático, sin backend)
+const formPqrs = document.getElementById('formPqrs');
+if (formPqrs) {
+  formPqrs.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const val = (id) => document.getElementById(id).value.trim();
+
+    const nombre = val('pqrsNombre');
+    const cedula = val('pqrsCedula');
+    const correo = val('pqrsCorreo');
+    const tipo = val('pqrsTipo');
+    const telefono = val('pqrsTelefono');
+    const pais = val('pqrsPais');
+    const pedido = val('pqrsPedido');
+    const descripcion = val('pqrsDescripcion');
+
+    let mensaje = 'Hola Sabor y Sazón S.A.S., quiero radicar una PQRS:\n\n';
+    mensaje += `Tipo: ${tipo}\n`;
+    mensaje += `Nombre: ${nombre}\n`;
+    mensaje += `Cédula: ${cedula}\n`;
+    mensaje += `Correo: ${correo}\n`;
+    mensaje += `Teléfono: ${telefono}\n`;
+    mensaje += `País: ${pais}\n`;
+    if (pedido) mensaje += `Número de pedido: ${pedido}\n`;
+    mensaje += `Descripción: ${descripcion}`;
+
+    const url = `https://wa.me/573125788604?text=${encodeURIComponent(mensaje)}`;
+    window.open(url, '_blank');
+    formPqrs.reset();
+  });
+}

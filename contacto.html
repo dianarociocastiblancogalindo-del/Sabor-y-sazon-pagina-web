@@ -18,8 +18,8 @@
     <a href="index.html" class="logo"><img src="logo.jpeg" alt="Sabor y Sazón S.A.S." class="logo-img">Sabor y Sazón S.A.S.</a>
     <nav class="nav-links">
       <a href="index.html">Inicio</a>
-      <a href="servicios.html">Servicios</a>
       <a href="quienes-somos.html">Quiénes somos</a>
+      <a href="servicios.html">Servicios</a>
       <a href="organigrama.html">Organigrama</a>
       <a href="contacto.html" class="actual">Contacto</a>
     </nav>
@@ -28,8 +28,8 @@
   </div>
   <div class="contenedor" id="menu-movil">
     <a href="index.html">Inicio</a>
-    <a href="servicios.html">Servicios</a>
     <a href="quienes-somos.html">Quiénes somos</a>
+    <a href="servicios.html">Servicios</a>
     <a href="organigrama.html">Organigrama</a>
     <a href="contacto.html" class="actual">Contacto</a>
   </div>
@@ -58,6 +58,76 @@
       </span>
     </div>
     <span class="proximamente">Próximamente</span>
+  </div>
+</section>
+
+<!-- ================= PQRS ================= -->
+<section id="pqrs">
+  <div class="contenedor">
+    <div class="encabezado-seccion reveal">
+      <span class="eyebrow">Servicio al cliente</span>
+      <h2>Contáctanos (PQRS)</h2>
+      <p>Aquí puedes dejar cualquier pregunta, queja, reclamo, solicitud o garantía. Al enviar el formulario se abrirá WhatsApp con tu mensaje listo para enviarnos.</p>
+    </div>
+
+    <div class="pqrs-grid reveal">
+      <div class="pqrs-foto">
+        <img src="pqrs.jpeg" alt="Atención al cliente Sabor y Sazón S.A.S.">
+      </div>
+
+      <form class="pqrs-form" id="formPqrs">
+        <div class="campo">
+          <label for="pqrsNombre">Nombre</label>
+          <input type="text" id="pqrsNombre" placeholder="Tu nombre" required>
+        </div>
+        <div class="campo-fila">
+          <div class="campo">
+            <label for="pqrsCedula">Número de cédula</label>
+            <input type="text" id="pqrsCedula" placeholder="Ej: 1234567890" required>
+          </div>
+          <div class="campo">
+            <label for="pqrsCorreo">Correo</label>
+            <input type="email" id="pqrsCorreo" placeholder="tu@correo.com" required>
+          </div>
+        </div>
+        <div class="campo-fila">
+          <div class="campo">
+            <label for="pqrsTipo">Tipo de consulta</label>
+            <select id="pqrsTipo" required>
+              <option value="" disabled selected>Selecciona una opción</option>
+              <option>Petición</option>
+              <option>Queja</option>
+              <option>Reclamo</option>
+              <option>Sugerencia</option>
+              <option>Garantía</option>
+            </select>
+          </div>
+          <div class="campo">
+            <label for="pqrsTelefono">Número de teléfono</label>
+            <input type="tel" id="pqrsTelefono" placeholder="Ej: 3001234567" required>
+          </div>
+        </div>
+        <div class="campo-fila">
+          <div class="campo">
+            <label for="pqrsPais">País</label>
+            <input type="text" id="pqrsPais" placeholder="Colombia" required>
+          </div>
+          <div class="campo">
+            <label for="pqrsPedido">Número de pedido (opcional)</label>
+            <input type="text" id="pqrsPedido" placeholder="Ej: #118662">
+          </div>
+        </div>
+        <div class="campo">
+          <label for="pqrsDescripcion">Descripción</label>
+          <textarea id="pqrsDescripcion" rows="4" placeholder="Describe tu caso con el mayor detalle posible..." required></textarea>
+        </div>
+        <label class="campo-check">
+          <input type="checkbox" id="pqrsPolitica" required>
+          Acepto la política de privacidad y autorizo el tratamiento de mis datos personales.
+        </label>
+        <button type="submit" class="boton boton-solido">Enviar solicitud</button>
+      </form>
+    </div>
   </div>
 </section>
 
