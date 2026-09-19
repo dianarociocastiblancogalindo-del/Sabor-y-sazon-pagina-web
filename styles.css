@@ -326,6 +326,14 @@
     background:color-mix(in srgb, var(--acento-valor, var(--dorado)) 16%, white);
   }
   .tarjeta-valor .icono-valor svg{width:21px;height:21px;stroke:var(--acento-valor, var(--dorado));}
+  .tarjeta-valor{position:relative;overflow:hidden;padding-top:0;}
+  .tarjeta-valor .foto-valor{
+    width:calc(100% + 2.4rem);margin:-1.5rem -1.2rem 1rem;
+    aspect-ratio:4/3;overflow:hidden;
+  }
+  .tarjeta-valor .foto-valor img{width:100%;height:100%;object-fit:cover;display:block;}
+  .tarjeta-valor:has(.foto-valor){padding-top:0;}
+  .tarjeta-valor:has(.icono-valor){padding-top:1.5rem;}
   .tarjeta-valor h4{font-family:'Fraunces',serif;font-size:1.02rem;color:var(--verde-oscuro);margin-bottom:.45rem;}
   .tarjeta-valor p{font-size:.83rem;color:var(--texto-suave);}
 
@@ -640,3 +648,8 @@
 }
 .campo-check input{margin-top:.2rem;}
 .pqrs-form button{align-self:flex-start;margin-top:.4rem;border:none;cursor:pointer;}
+
+/* ---------- POLITICAS: 5 tarjetas, mejor balance en 3 columnas ---------- */
+@media(min-width:700px){ #politicas .grid-valores{grid-template-columns:repeat(3,1fr);} }
+#politicas .tarjeta-valor{text-align:left;}
+#politicas .tarjeta-valor .icono-valor{margin:0 0 .8rem;}
