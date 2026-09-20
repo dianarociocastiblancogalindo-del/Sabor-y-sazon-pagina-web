@@ -115,9 +115,11 @@
   .nav-links{display:none;}
   @media(min-width:820px){.nav-links{display:flex;}}
   #menu-movil{
-    display:none;flex-direction:column;gap:1rem;padding:1rem 0 1.6rem;font-weight:600;
+    display:flex;flex-direction:column;gap:1rem;font-weight:600;
+    max-height:0;opacity:0;overflow:hidden;padding:0;
+    transition:max-height .4s ease, opacity .3s ease, padding .4s ease;
   }
-  #menu-movil.abierto{display:flex;}
+  #menu-movil.abierto{max-height:400px;opacity:1;padding:1rem 0 1.6rem;}
   @media(min-width:820px){#menu-movil{display:none !important;}}
 
   /* ---------- HERO ---------- */
@@ -564,7 +566,10 @@
   }
 
   /* ---------- REVEAL ---------- */
-  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal{
+    opacity:0;transform:translateY(26px) scale(.97);
+    transition:opacity .65s cubic-bezier(.16,.84,.44,1), transform .65s cubic-bezier(.16,.84,.44,1);
+  }
   .reveal.visible{opacity:1;transform:none;}
 
 /* ---------- NAV: enlace activo ---------- */
@@ -653,3 +658,80 @@
 @media(min-width:700px){ #politicas .grid-valores{grid-template-columns:repeat(3,1fr);} }
 #politicas .tarjeta-valor{text-align:left;}
 #politicas .tarjeta-valor .icono-valor{margin:0 0 .8rem;}
+
+/* =========================================================
+   ANIMACIONES ADICIONALES
+   ========================================================= */
+
+/* ---------- Transición de entrada/salida entre páginas ---------- */
+body{
+  opacity:0;
+  animation:pagina-entrada .5s ease forwards;
+}
+@keyframes pagina-entrada{ to{opacity:1;} }
+body.pagina-saliendo{
+  opacity:0 !important;
+  transition:opacity .28s ease;
+}
+
+/* ---------- Barra de progreso de lectura ---------- */
+.barra-progreso{
+  position:fixed;top:0;left:0;height:3px;width:0%;
+  background:linear-gradient(90deg, var(--dorado), var(--naranja), var(--teja));
+  z-index:200;
+}
+
+/* ---------- Logo: pequeño saludo al pasar el mouse ---------- */
+.logo:hover .logo-img{animation:logo-saludo .5s ease;}
+@keyframes logo-saludo{
+  0%,100%{transform:rotate(0);}
+  25%{transform:rotate(-10deg);}
+  75%{transform:rotate(10deg);}
+}
+
+/* ---------- Íconos: "salto" con giro al pasar el mouse por la tarjeta ---------- */
+.icono, .icono-valor, .icono-mv, .icono-c{
+  transition:transform .35s cubic-bezier(.34,1.56,.64,1);
+}
+.tarjeta-servicio:hover .icono,
+.tarjeta-valor:hover .icono-valor,
+.tarjeta-mv:hover .icono-mv,
+.contacto-item:hover .icono-c{
+  transform:scale(1.15) rotate(-8deg);
+}
+
+/* ---------- Fotos: zoom suave al pasar el mouse ---------- */
+.foto-integrante img, .foto-valor img, .banner-pagina img, .pqrs-foto img{
+  transition:transform .6s ease;
+}
+.tarjeta-integrante:hover .foto-integrante img,
+.tarjeta-valor:hover .foto-valor img,
+.pqrs-foto:hover img{
+  transform:scale(1.07);
+}
+
+/* ---------- Botones: feedback al presionar ---------- */
+.boton:active{transform:scale(.96);}
+.chip-valor:active, .chip-municipio:active{transform:scale(.95);}
+
+/* ---------- WhatsApp: anillo pulsante para llamar la atención ---------- */
+.whatsapp-flotante{position:fixed;}
+.whatsapp-flotante::before{
+  content:'';position:absolute;inset:-6px;border-radius:50%;
+  border:2px solid #25D366;opacity:.55;
+  animation:pulso-whatsapp 2.4s ease-out infinite;
+}
+@keyframes pulso-whatsapp{
+  0%{transform:scale(.9);opacity:.55;}
+  70%{transform:scale(1.55);opacity:0;}
+  100%{opacity:0;}
+}
+
+/* ---------- Respeto por "reducir movimiento" ---------- */
+@media (prefers-reduced-motion: reduce){
+  body{animation:none;opacity:1;}
+  body.pagina-saliendo{transition:none;}
+  .reveal{transition:none;opacity:1;transform:none;}
+  .logo:hover .logo-img{animation:none;}
+  .whatsapp-flotante::before{animation:none;display:none;}
+}

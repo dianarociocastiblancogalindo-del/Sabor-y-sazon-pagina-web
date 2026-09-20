@@ -15,7 +15,7 @@
     });
   });
 
-  // Animación al hacer scroll
+  // Animación al hacer scroll (con aparición escalonada por grupo)
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -24,7 +24,15 @@
       }
     });
   }, { threshold: 0.15 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  const contadorPorPadre = new Map();
+  document.querySelectorAll('.reveal').forEach(el => {
+    const padre = el.parentElement;
+    const indice = contadorPorPadre.get(padre) || 0;
+    contadorPorPadre.set(padre, indice + 1);
+    el.style.transitionDelay = Math.min(indice * 80, 400) + 'ms';
+    observer.observe(el);
+  });
 
   // Mascota que se desplaza por el costado según el scroll
   const mascota = document.getElementById('mascotaFlotante');
@@ -106,5 +114,32 @@ if (formPqrs) {
     const url = `https://wa.me/573125788604?text=${encodeURIComponent(mensaje)}`;
     window.open(url, '_blank');
     formPqrs.reset();
+  });
+}
+
+// Barra de progreso de lectura
+const barraProgreso = document.getElementById('barraProgreso');
+function actualizarBarraProgreso(){
+  if (!barraProgreso) return;
+  const alturaTotal = document.documentElement.scrollHeight - window.innerHeight;
+  const progreso = alturaTotal > 0 ? (window.scrollY / alturaTotal) * 100 : 0;
+  barraProgreso.style.width = progreso + '%';
+}
+window.addEventListener('scroll', actualizarBarraProgreso, { passive: true });
+window.addEventListener('resize', actualizarBarraProgreso);
+actualizarBarraProgreso();
+
+// Transición suave al navegar entre páginas del sitio
+const prefiereMenosMovimiento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!prefiereMenosMovimiento) {
+  document.querySelectorAll('a[href$=".html"]').forEach(enlace => {
+    enlace.addEventListener('click', function (e) {
+      if (this.target === '_blank' || this.hasAttribute('download')) return;
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+      const destino = this.getAttribute('href');
+      e.preventDefault();
+      document.body.classList.add('pagina-saliendo');
+      setTimeout(() => { window.location.href = destino; }, 260);
+    });
   });
 }
