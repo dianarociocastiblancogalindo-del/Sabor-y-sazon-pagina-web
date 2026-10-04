@@ -43,11 +43,56 @@
     <div class="encabezado-seccion reveal">
       <span class="eyebrow">Nuestro equipo</span>
       <h2>Organigrama</h2>
-      <p>Así está organizado el equipo de Sabor y Sazón S.A.S.</p>
+      <p>Así está organizado el equipo de Sabor y Sazón S.A.S. Toca "Gerente" y cada jefatura para ver el equipo a su cargo.</p>
     </div>
 
-    <div class="marco-imagen reveal">
-      <img src="organigrama.jpeg" alt="Organigrama de Sabor y Sazón S.A.S.: Gerente, Jefe administrativo, Jefe comercial, Jefe de cocina, Jefe de Talento Humano y Especialista en SST, con sus respectivos auxiliares" loading="lazy">
+    <div class="organigrama-interactivo reveal">
+      <ul class="arbol-org">
+        <li>
+          <button class="nodo-org nodo-raiz tiene-hijos" data-toggle="nivel-jefes">Gerente</button>
+          <ul id="nivel-jefes" class="oculto">
+            <li>
+              <button class="nodo-org nodo-admin tiene-hijos" data-toggle="hijos-admin">Jefe Administrativo</button>
+              <ul id="hijos-admin" class="oculto">
+                <li><span class="nodo-org nodo-chico nodo-admin-claro">Auxiliar Financiero</span></li>
+                <li><span class="nodo-org nodo-chico nodo-admin-claro">Auxiliar Contable</span></li>
+              </ul>
+            </li>
+            <li>
+              <button class="nodo-org nodo-comercial tiene-hijos" data-toggle="hijos-comercial">Jefe Comercial</button>
+              <ul id="hijos-comercial" class="oculto">
+                <li><span class="nodo-org nodo-chico nodo-comercial-claro">Vendedor</span></li>
+                <li><span class="nodo-org nodo-chico nodo-comercial-claro">Asesor de Servicio</span></li>
+                <li><span class="nodo-org nodo-chico nodo-comercial-claro">Asesor Comercial</span></li>
+              </ul>
+            </li>
+            <li>
+              <button class="nodo-org nodo-cocina tiene-hijos" data-toggle="hijos-cocina">Jefe de Cocina</button>
+              <ul id="hijos-cocina" class="oculto">
+                <li><span class="nodo-org nodo-chico nodo-cocina-claro">Cocinero</span></li>
+                <li><span class="nodo-org nodo-chico nodo-cocina-claro">Auxiliar de Cocina</span></li>
+                <li><span class="nodo-org nodo-chico nodo-cocina-claro">Mesero</span></li>
+              </ul>
+            </li>
+            <li>
+              <button class="nodo-org nodo-talento tiene-hijos" data-toggle="hijos-talento">Jefe de Talento Humano</button>
+              <ul id="hijos-talento" class="oculto">
+                <li><span class="nodo-org nodo-chico nodo-talento-claro">Auxiliar de Bienestar</span></li>
+                <li><span class="nodo-org nodo-chico nodo-talento-claro">Selección</span></li>
+                <li><span class="nodo-org nodo-chico nodo-talento-claro">Capacitación</span></li>
+                <li><span class="nodo-org nodo-chico nodo-talento-claro">Reclutamiento</span></li>
+              </ul>
+            </li>
+            <li>
+              <button class="nodo-org nodo-sst tiene-hijos" data-toggle="hijos-sig">Sistemas Integrados de Gestión</button>
+              <ul id="hijos-sig" class="oculto">
+                <li><span class="nodo-org nodo-chico nodo-sig-claro">Gestor de Calidad</span></li>
+                <li><span class="nodo-org nodo-chico nodo-sig-claro">Especialista en SST</span></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
     </div>
   </div>
 </section>

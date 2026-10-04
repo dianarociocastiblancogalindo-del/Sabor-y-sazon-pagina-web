@@ -407,6 +407,7 @@
   .nodo-comercial-claro{background:color-mix(in srgb, var(--naranja) 16%, white) !important;color:#a34204 !important;}
   .nodo-cocina-claro{background:color-mix(in srgb, var(--dorado) 20%, white) !important;color:#8a5c02 !important;}
   .nodo-talento-claro{background:color-mix(in srgb, var(--verde-lima) 22%, white) !important;color:#5c6108 !important;}
+  .nodo-sig-claro{background:color-mix(in srgb, var(--teja) 16%, white) !important;color:var(--teja) !important;}
 
   @media(max-width:900px){.arbol-org{transform:scale(.82);transform-origin:top center;}}
   @media(max-width:640px){.arbol-org{transform:scale(.68);}}
