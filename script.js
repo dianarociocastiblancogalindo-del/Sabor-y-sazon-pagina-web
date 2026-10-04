@@ -85,7 +85,7 @@
     requestAnimationFrame(animar);
   }
 
-// Formulario PQRS: arma el mensaje y lo envía por WhatsApp (sitio estático, sin backend)
+// Formulario PQRSF: arma el mensaje y lo envía por WhatsApp (sitio estático, sin backend)
 const formPqrs = document.getElementById('formPqrs');
 if (formPqrs) {
   formPqrs.addEventListener('submit', (e) => {
@@ -101,7 +101,7 @@ if (formPqrs) {
     const pedido = val('pqrsPedido');
     const descripcion = val('pqrsDescripcion');
 
-    let mensaje = 'Hola Sabor y Sazón S.A.S., quiero radicar una PQRS:\n\n';
+    let mensaje = 'Hola Sabor y Sazón S.A.S., quiero radicar una PQRSF:\n\n';
     mensaje += `Tipo: ${tipo}\n`;
     mensaje += `Nombre: ${nombre}\n`;
     mensaje += `Cédula: ${cedula}\n`;
