@@ -11,6 +11,9 @@
     --blanco:#FFFEF9;
     --radio:22px;
     --sombra: 0 18px 40px -20px rgba(62,89,2,0.35);
+    --rh-teal:#1C7A72;
+    --rh-morado:#7B2E86;
+    --rh-cafe:#3A2415;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -383,34 +386,61 @@
   .arbol-org ul.oculto{display:none;}
 
   .nodo-org{
-    display:inline-flex;align-items:center;gap:.4rem;
+    display:inline-flex;align-items:center;gap:.55rem;
     border:none;cursor:pointer;font-family:'Manrope',sans-serif;
     font-weight:700;font-size:.84rem;color:white;
-    padding:.7em 1.05em;border-radius:12px;
+    padding:.6em 1.1em .6em .6em;border-radius:14px;
     box-shadow:var(--sombra);white-space:nowrap;
     transition:transform .2s ease;
   }
   button.nodo-org:hover{transform:translateY(-2px);}
-  .nodo-org.tiene-hijos::after{content:'+';margin-left:.25em;font-size:1rem;line-height:1;}
+  .nodo-org.tiene-hijos::after{content:'+';margin-left:.15em;font-size:1rem;line-height:1;}
   .nodo-org.tiene-hijos.activo::after{content:'–';}
   span.nodo-org{cursor:default;}
 
-  .nodo-raiz{background:#2B3403;font-size:.92rem;padding:.85em 1.5em;}
-  .nodo-admin{background:var(--verde-oscuro);}
-  .nodo-comercial{background:var(--naranja);}
-  .nodo-cocina{background:var(--dorado);color:var(--texto);}
-  .nodo-talento{background:var(--verde-lima);color:var(--texto);}
-  .nodo-sst{background:var(--teja);}
+  .icono-nodo{
+    width:30px;height:30px;border-radius:50%;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--blanco);
+  }
+  .icono-nodo svg{width:16px;height:16px;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;}
 
-  .nodo-chico{font-size:.76rem !important;font-weight:600 !important;padding:.5em .85em !important;box-shadow:none !important;}
+  .nodo-raiz{background:var(--rh-cafe);font-size:.9rem;padding:.7em 1.3em .7em .6em;}
+  .nodo-raiz .icono-nodo svg{stroke:var(--rh-cafe);}
+  .nodo-admin{background:var(--verde-oscuro);}
+  .nodo-admin .icono-nodo svg{stroke:var(--verde-oscuro);}
+  .nodo-comercial{background:var(--naranja);}
+  .nodo-comercial .icono-nodo svg{stroke:var(--naranja);}
+  .nodo-cocina{background:var(--dorado);color:var(--texto);}
+  .nodo-cocina .icono-nodo svg{stroke:var(--dorado);}
+  .nodo-talento{background:var(--rh-teal);}
+  .nodo-talento .icono-nodo svg{stroke:var(--rh-teal);}
+  .nodo-sst{background:var(--rh-morado);}
+  .nodo-sst .icono-nodo svg{stroke:var(--rh-morado);}
+
+  .nodo-chico{font-size:.76rem !important;font-weight:600 !important;padding:.4em .9em .4em .4em !important;box-shadow:none !important;}
+  .nodo-chico .icono-nodo{width:24px;height:24px;}
+  .nodo-chico .icono-nodo svg{width:13px;height:13px;stroke:var(--blanco);}
   .nodo-admin-claro{background:color-mix(in srgb, var(--verde-oscuro) 16%, white) !important;color:var(--verde-oscuro) !important;}
+  .nodo-admin-claro .icono-nodo{background:var(--verde-oscuro);}
   .nodo-comercial-claro{background:color-mix(in srgb, var(--naranja) 16%, white) !important;color:#a34204 !important;}
+  .nodo-comercial-claro .icono-nodo{background:var(--naranja);}
   .nodo-cocina-claro{background:color-mix(in srgb, var(--dorado) 20%, white) !important;color:#8a5c02 !important;}
-  .nodo-talento-claro{background:color-mix(in srgb, var(--verde-lima) 22%, white) !important;color:#5c6108 !important;}
-  .nodo-sig-claro{background:color-mix(in srgb, var(--teja) 16%, white) !important;color:var(--teja) !important;}
+  .nodo-cocina-claro .icono-nodo{background:var(--dorado);}
+  .nodo-talento-claro{background:color-mix(in srgb, var(--rh-teal) 18%, white) !important;color:var(--rh-teal) !important;}
+  .nodo-talento-claro .icono-nodo{background:var(--rh-teal);}
+  .nodo-sig-claro{background:color-mix(in srgb, var(--rh-morado) 16%, white) !important;color:var(--rh-morado) !important;}
+  .nodo-sig-claro .icono-nodo{background:var(--rh-morado);}
 
   @media(max-width:900px){.arbol-org{transform:scale(.82);transform-origin:top center;}}
   @media(max-width:640px){.arbol-org{transform:scale(.68);}}
+
+  /* ---------- Hojas decorativas en las esquinas ---------- */
+  .organigrama-interactivo{position:relative;}
+  .hoja-decorativa{position:absolute;opacity:.5;pointer-events:none;}
+  .hoja-decorativa.sup-der{top:-10px;right:0;width:70px;transform:rotate(12deg);}
+  .hoja-decorativa.inf-izq{bottom:-14px;left:4px;width:58px;transform:rotate(-18deg) scaleX(-1);}
+  @media(max-width:640px){.hoja-decorativa{display:none;}}
 
   .ayuda-arbol{text-align:center;font-size:.85rem;color:var(--texto-suave);margin-top:-.5rem;}
 
