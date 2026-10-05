@@ -353,35 +353,21 @@
   }
   .marco-imagen img{width:100%;display:block;}
 
-  /* ---------- ÁRBOL INTERACTIVO (ORGANIGRAMA) ---------- */
+  /* ---------- ÁRBOL INTERACTIVO (ORGANIGRAMA) — formato vertical ---------- */
   .organigrama-interactivo{
-    display:flex;justify-content:center;
-    overflow-x:auto;padding:1rem .5rem 2rem;
+    padding:1rem .5rem 2rem;
   }
   .arbol-org, .arbol-org ul{
-    list-style:none;margin:0;padding-top:0;
-    display:flex;justify-content:center;
+    list-style:none;margin:0;padding:0;
   }
-  .arbol-org ul{padding-top:28px;position:relative;}
+  .arbol-org{display:flex;flex-direction:column;align-items:flex-start;}
   .arbol-org li{
-    list-style:none;position:relative;padding:28px 14px 0;
-    display:flex;flex-direction:column;align-items:center;
-    text-align:center;
+    list-style:none;display:block;text-align:left;margin-bottom:.6rem;
   }
-  .arbol-org > li{padding-top:0;}
-  .arbol-org ul li::before, .arbol-org ul li::after{
-    content:'';position:absolute;top:0;right:50%;
-    border-top:2px solid #C9CFA0;width:50%;height:20px;
-  }
-  .arbol-org ul li::after{right:auto;left:50%;border-left:2px solid #C9CFA0;}
-  .arbol-org ul li:only-child::after, .arbol-org ul li:only-child::before{display:none;}
-  .arbol-org ul li:only-child{padding-top:0;}
-  .arbol-org ul li:first-child::before, .arbol-org ul li:last-child::after{border:none;}
-  .arbol-org ul li:last-child::before{border-right:2px solid #C9CFA0;border-radius:0 6px 0 0;}
-  .arbol-org ul li:first-child::after{border-radius:6px 0 0 0;}
-  .arbol-org ul ul::before{
-    content:'';position:absolute;top:0;left:50%;
-    border-left:2px solid #C9CFA0;width:0;height:20px;
+  .arbol-org ul{
+    margin:.6rem 0 .2rem 1rem;
+    padding-left:1.1rem;
+    border-left:2px dashed #C9CFA0;
   }
   .arbol-org ul.oculto{display:none;}
 
@@ -390,7 +376,7 @@
     border:none;cursor:pointer;font-family:'Manrope',sans-serif;
     font-weight:700;font-size:.84rem;color:white;
     padding:.6em 1.1em .6em .6em;border-radius:14px;
-    box-shadow:var(--sombra);white-space:nowrap;
+    box-shadow:var(--sombra);white-space:normal;max-width:100%;
     transition:transform .2s ease;
   }
   button.nodo-org:hover{transform:translateY(-2px);}
@@ -432,8 +418,6 @@
   .nodo-sig-claro{background:color-mix(in srgb, var(--rh-morado) 16%, white) !important;color:var(--rh-morado) !important;}
   .nodo-sig-claro .icono-nodo{background:var(--rh-morado);}
 
-  @media(max-width:900px){.arbol-org{transform:scale(.82);transform-origin:top center;}}
-  @media(max-width:640px){.arbol-org{transform:scale(.68);}}
 
   /* ---------- Hojas decorativas en las esquinas ---------- */
   .organigrama-interactivo{position:relative;}
