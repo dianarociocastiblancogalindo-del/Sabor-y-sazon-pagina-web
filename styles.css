@@ -122,7 +122,7 @@
     max-height:0;opacity:0;overflow:hidden;padding:0;
     transition:max-height .4s ease, opacity .3s ease, padding .4s ease;
   }
-  #menu-movil.abierto{max-height:480px;opacity:1;padding:1rem 0 1.6rem;}
+  #menu-movil.abierto{max-height:400px;opacity:1;padding:1rem 0 1.6rem;}
   @media(min-width:820px){#menu-movil{display:none !important;}}
 
   /* ---------- HERO ---------- */
@@ -353,36 +353,34 @@
   }
   .marco-imagen img{width:100%;display:block;}
 
-  /* ---------- ÁRBOL INTERACTIVO (ORGANIGRAMA) — formato vertical ---------- */
+  /* ---------- ORGANIGRAMA: Gerente arriba + columnas de jefaturas ---------- */
   .organigrama-interactivo{
     padding:1rem .5rem 2rem;
   }
-  .arbol-org, .arbol-org ul{
-    list-style:none;margin:0;padding:0;
+  .gerente-centro{display:flex;justify-content:center;margin-bottom:1.6rem;}
+
+  .grid-organigrama{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(190px, 1fr));
+    gap:1.4rem;
+    margin-top:0;
   }
-  .arbol-org{display:flex;flex-direction:column;align-items:flex-start;}
-  .arbol-org li{
-    list-style:none;display:block;text-align:left;margin-bottom:.6rem;
-  }
-  .arbol-org ul{
-    margin:.6rem 0 .2rem 1rem;
-    padding-left:1.1rem;
-    border-left:2px dashed #C9CFA0;
-  }
-  .arbol-org ul.oculto{display:none;}
+  .grid-organigrama.oculto{display:none;}
+  .columna-rol{display:flex;flex-direction:column;gap:.6rem;}
+  .subroles{display:flex;flex-direction:column;gap:.5rem;}
 
   .nodo-org{
-    display:inline-flex;align-items:center;gap:.55rem;
-    border:none;cursor:pointer;font-family:'Manrope',sans-serif;
-    font-weight:700;font-size:.84rem;color:white;
+    display:flex;align-items:center;gap:.55rem;
+    border:none;cursor:default;font-family:'Manrope',sans-serif;
+    font-weight:700;font-size:.84rem;color:white;text-align:left;
     padding:.6em 1.1em .6em .6em;border-radius:14px;
-    box-shadow:var(--sombra);white-space:normal;max-width:100%;
+    box-shadow:var(--sombra);width:100%;box-sizing:border-box;
     transition:transform .2s ease;
   }
+  button.nodo-org{cursor:pointer;}
   button.nodo-org:hover{transform:translateY(-2px);}
-  .nodo-org.tiene-hijos::after{content:'+';margin-left:.15em;font-size:1rem;line-height:1;}
+  .nodo-org.tiene-hijos::after{content:'+';margin-left:auto;font-size:1.1rem;line-height:1;}
   .nodo-org.tiene-hijos.activo::after{content:'–';}
-  span.nodo-org{cursor:default;}
 
   .icono-nodo{
     width:30px;height:30px;border-radius:50%;flex-shrink:0;
@@ -751,10 +749,51 @@ body.pagina-saliendo{
   .whatsapp-flotante::before{animation:none;display:none;}
 }
 
+/* ---------- ORGANIGRAMA: tarjeta de funciones al pasar el mouse ---------- */
+.organigrama-interactivo{z-index:5;}
+.nodo-org{position:relative;}
+.nodo-org:hover,.nodo-org:focus,.nodo-org:focus-within{z-index:30;outline:none;}
+.nodo-org:focus-visible{box-shadow:0 0 0 3px var(--verde-oscuro), var(--sombra);}
 
-/* ---------- Enlace externo: Excel ---------- */
-.enlace-excel{display:inline-flex;align-items:center;gap:.4rem;}
-.enlace-excel svg{width:15px;height:15px;flex-shrink:0;}
-.nav-links a.enlace-excel{color:var(--verde-oscuro);}
-.nav-links a.enlace-excel:hover{color:var(--naranja);}
-#menu-movil a.enlace-excel{display:flex;}
+.rol-info{
+  position:absolute;top:calc(100% + 10px);left:0;
+  width:300px;max-width:88vw;box-sizing:border-box;
+  background:var(--blanco);color:var(--texto);
+  border:1px solid rgba(62,89,2,.18);border-radius:14px;
+  padding:1rem 1.1rem;box-shadow:0 22px 44px -14px rgba(43,52,3,.45);
+  font-weight:500;font-size:.82rem;line-height:1.45;text-align:left;
+  opacity:0;visibility:hidden;transform:translateY(-6px);
+  transition:opacity .18s ease, transform .18s ease, visibility .18s;
+  pointer-events:none;cursor:default;
+}
+.rol-info::before{
+  content:'';position:absolute;top:-6px;left:26px;width:11px;height:11px;
+  background:var(--blanco);border-left:1px solid rgba(62,89,2,.18);border-top:1px solid rgba(62,89,2,.18);
+  transform:rotate(45deg);
+}
+.nodo-org:hover > .rol-info,
+.nodo-org:focus > .rol-info,
+.nodo-org:focus-within > .rol-info{opacity:1;visibility:visible;transform:translateY(0);}
+
+.rol-info .rol-titulo{display:block;font-family:'Fraunces',serif;font-size:1rem;color:var(--verde-oscuro);margin-bottom:.35rem;}
+.rol-info .rol-sub{display:block;font-weight:800;font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;color:var(--texto-suave);margin:.55rem 0 .2rem;}
+.rol-info p{margin:0;}
+.rol-info ul{margin:0;padding-left:1.1rem;}
+.rol-info li{margin:.15rem 0;}
+.rol-info .rol-deps{list-style:none;padding-left:0;}
+.rol-info .rol-deps li{padding-left:.7rem;border-left:3px solid var(--verde-oscuro);margin:.4rem 0;}
+.rol-info .rol-deps b{color:var(--verde-oscuro);}
+
+/* Gerente: centrada */
+.nodo-raiz > .rol-info{left:50%;transform:translate(-50%,-6px);}
+.nodo-raiz:hover > .rol-info,.nodo-raiz:focus > .rol-info{transform:translate(-50%,0);}
+.nodo-raiz > .rol-info::before{left:calc(50% - 6px);}
+
+/* Últimas columnas: la tarjeta se abre hacia la izquierda para no salirse de la pantalla */
+.columna-rol:nth-child(n+4) .rol-info{left:auto;right:0;}
+.columna-rol:nth-child(n+4) .rol-info::before{left:auto;right:26px;}
+
+@media(max-width:700px){
+  .columna-rol .rol-info,.columna-rol:nth-child(n+4) .rol-info{left:0;right:0;width:auto;max-width:none;}
+  .columna-rol .rol-info::before,.columna-rol:nth-child(n+4) .rol-info::before{left:26px;right:auto;}
+}
