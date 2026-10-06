@@ -748,3 +748,52 @@ body.pagina-saliendo{
   .logo:hover .logo-img{animation:none;}
   .whatsapp-flotante::before{animation:none;display:none;}
 }
+
+/* ---------- ORGANIGRAMA: tarjeta de funciones al pasar el mouse ---------- */
+.organigrama-interactivo{z-index:5;}
+.nodo-org{position:relative;}
+.nodo-org:hover,.nodo-org:focus,.nodo-org:focus-within{z-index:30;outline:none;}
+.nodo-org:focus-visible{box-shadow:0 0 0 3px var(--verde-oscuro), var(--sombra);}
+
+.rol-info{
+  position:absolute;top:calc(100% + 10px);left:0;
+  width:300px;max-width:88vw;box-sizing:border-box;
+  background:var(--blanco);color:var(--texto);
+  border:1px solid rgba(62,89,2,.18);border-radius:14px;
+  padding:1rem 1.1rem;box-shadow:0 22px 44px -14px rgba(43,52,3,.45);
+  font-weight:500;font-size:.82rem;line-height:1.45;text-align:left;
+  opacity:0;visibility:hidden;transform:translateY(-6px);
+  transition:opacity .18s ease, transform .18s ease, visibility .18s;
+  pointer-events:none;cursor:default;
+}
+.rol-info::before{
+  content:'';position:absolute;top:-6px;left:26px;width:11px;height:11px;
+  background:var(--blanco);border-left:1px solid rgba(62,89,2,.18);border-top:1px solid rgba(62,89,2,.18);
+  transform:rotate(45deg);
+}
+.nodo-org:hover > .rol-info,
+.nodo-org:focus > .rol-info,
+.nodo-org:focus-within > .rol-info{opacity:1;visibility:visible;transform:translateY(0);}
+
+.rol-info .rol-titulo{display:block;font-family:'Fraunces',serif;font-size:1rem;color:var(--verde-oscuro);margin-bottom:.35rem;}
+.rol-info .rol-sub{display:block;font-weight:800;font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;color:var(--texto-suave);margin:.55rem 0 .2rem;}
+.rol-info p{margin:0;}
+.rol-info ul{margin:0;padding-left:1.1rem;}
+.rol-info li{margin:.15rem 0;}
+.rol-info .rol-deps{list-style:none;padding-left:0;}
+.rol-info .rol-deps li{padding-left:.7rem;border-left:3px solid var(--verde-oscuro);margin:.4rem 0;}
+.rol-info .rol-deps b{color:var(--verde-oscuro);}
+
+/* Gerente: centrada */
+.nodo-raiz > .rol-info{left:50%;transform:translate(-50%,-6px);}
+.nodo-raiz:hover > .rol-info,.nodo-raiz:focus > .rol-info{transform:translate(-50%,0);}
+.nodo-raiz > .rol-info::before{left:calc(50% - 6px);}
+
+/* Últimas columnas: la tarjeta se abre hacia la izquierda para no salirse de la pantalla */
+.columna-rol:nth-child(n+4) .rol-info{left:auto;right:0;}
+.columna-rol:nth-child(n+4) .rol-info::before{left:auto;right:26px;}
+
+@media(max-width:700px){
+  .columna-rol .rol-info,.columna-rol:nth-child(n+4) .rol-info{left:0;right:0;width:auto;max-width:none;}
+  .columna-rol .rol-info::before,.columna-rol:nth-child(n+4) .rol-info::before{left:26px;right:auto;}
+}
