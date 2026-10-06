@@ -122,7 +122,7 @@
     max-height:0;opacity:0;overflow:hidden;padding:0;
     transition:max-height .4s ease, opacity .3s ease, padding .4s ease;
   }
-  #menu-movil.abierto{max-height:400px;opacity:1;padding:1rem 0 1.6rem;}
+  #menu-movil.abierto{max-height:480px;opacity:1;padding:1rem 0 1.6rem;}
   @media(min-width:820px){#menu-movil{display:none !important;}}
 
   /* ---------- HERO ---------- */
@@ -353,34 +353,36 @@
   }
   .marco-imagen img{width:100%;display:block;}
 
-  /* ---------- ORGANIGRAMA: Gerente arriba + columnas de jefaturas ---------- */
+  /* ---------- ÁRBOL INTERACTIVO (ORGANIGRAMA) — formato vertical ---------- */
   .organigrama-interactivo{
     padding:1rem .5rem 2rem;
   }
-  .gerente-centro{display:flex;justify-content:center;margin-bottom:1.6rem;}
-
-  .grid-organigrama{
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(190px, 1fr));
-    gap:1.4rem;
-    margin-top:0;
+  .arbol-org, .arbol-org ul{
+    list-style:none;margin:0;padding:0;
   }
-  .grid-organigrama.oculto{display:none;}
-  .columna-rol{display:flex;flex-direction:column;gap:.6rem;}
-  .subroles{display:flex;flex-direction:column;gap:.5rem;}
+  .arbol-org{display:flex;flex-direction:column;align-items:flex-start;}
+  .arbol-org li{
+    list-style:none;display:block;text-align:left;margin-bottom:.6rem;
+  }
+  .arbol-org ul{
+    margin:.6rem 0 .2rem 1rem;
+    padding-left:1.1rem;
+    border-left:2px dashed #C9CFA0;
+  }
+  .arbol-org ul.oculto{display:none;}
 
   .nodo-org{
-    display:flex;align-items:center;gap:.55rem;
-    border:none;cursor:default;font-family:'Manrope',sans-serif;
-    font-weight:700;font-size:.84rem;color:white;text-align:left;
+    display:inline-flex;align-items:center;gap:.55rem;
+    border:none;cursor:pointer;font-family:'Manrope',sans-serif;
+    font-weight:700;font-size:.84rem;color:white;
     padding:.6em 1.1em .6em .6em;border-radius:14px;
-    box-shadow:var(--sombra);width:100%;box-sizing:border-box;
+    box-shadow:var(--sombra);white-space:normal;max-width:100%;
     transition:transform .2s ease;
   }
-  button.nodo-org{cursor:pointer;}
   button.nodo-org:hover{transform:translateY(-2px);}
-  .nodo-org.tiene-hijos::after{content:'+';margin-left:auto;font-size:1.1rem;line-height:1;}
+  .nodo-org.tiene-hijos::after{content:'+';margin-left:.15em;font-size:1rem;line-height:1;}
   .nodo-org.tiene-hijos.activo::after{content:'–';}
+  span.nodo-org{cursor:default;}
 
   .icono-nodo{
     width:30px;height:30px;border-radius:50%;flex-shrink:0;
@@ -749,114 +751,10 @@ body.pagina-saliendo{
   .whatsapp-flotante::before{animation:none;display:none;}
 }
 
-/* ---------- ORGANIGRAMA: tarjeta de funciones al pasar el mouse ---------- */
-.organigrama-interactivo{z-index:5;}
-.nodo-org{position:relative;}
-.nodo-org:hover,.nodo-org:focus,.nodo-org:focus-within{z-index:30;outline:none;}
-.nodo-org:focus-visible{box-shadow:0 0 0 3px var(--verde-oscuro), var(--sombra);}
 
-.rol-info{
-  position:absolute;top:calc(100% + 10px);left:0;
-  width:300px;max-width:88vw;box-sizing:border-box;
-  background:var(--blanco);color:var(--texto);
-  border:1px solid rgba(62,89,2,.18);border-radius:14px;
-  padding:1rem 1.1rem;box-shadow:0 22px 44px -14px rgba(43,52,3,.45);
-  font-weight:500;font-size:.82rem;line-height:1.45;text-align:left;
-  opacity:0;visibility:hidden;transform:translateY(-6px);
-  transition:opacity .18s ease, transform .18s ease, visibility .18s;
-  pointer-events:none;cursor:default;
-}
-.rol-info::before{
-  content:'';position:absolute;top:-6px;left:26px;width:11px;height:11px;
-  background:var(--blanco);border-left:1px solid rgba(62,89,2,.18);border-top:1px solid rgba(62,89,2,.18);
-  transform:rotate(45deg);
-}
-.nodo-org:hover > .rol-info,
-.nodo-org:focus > .rol-info,
-.nodo-org:focus-within > .rol-info{opacity:1;visibility:visible;transform:translateY(0);}
-
-.rol-info .rol-titulo{display:block;font-family:'Fraunces',serif;font-size:1rem;color:var(--verde-oscuro);margin-bottom:.35rem;}
-.rol-info .rol-sub{display:block;font-weight:800;font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;color:var(--texto-suave);margin:.55rem 0 .2rem;}
-.rol-info p{margin:0;}
-.rol-info ul{margin:0;padding-left:1.1rem;}
-.rol-info li{margin:.15rem 0;}
-.rol-info .rol-deps{list-style:none;padding-left:0;}
-.rol-info .rol-deps li{padding-left:.7rem;border-left:3px solid var(--verde-oscuro);margin:.4rem 0;}
-.rol-info .rol-deps b{color:var(--verde-oscuro);}
-
-/* Gerente: centrada */
-.nodo-raiz > .rol-info{left:50%;transform:translate(-50%,-6px);}
-.nodo-raiz:hover > .rol-info,.nodo-raiz:focus > .rol-info{transform:translate(-50%,0);}
-.nodo-raiz > .rol-info::before{left:calc(50% - 6px);}
-
-/* Últimas columnas: la tarjeta se abre hacia la izquierda para no salirse de la pantalla */
-.columna-rol:nth-child(n+4) .rol-info{left:auto;right:0;}
-.columna-rol:nth-child(n+4) .rol-info::before{left:auto;right:26px;}
-
-@media(max-width:700px){
-  .columna-rol .rol-info,.columna-rol:nth-child(n+4) .rol-info{left:0;right:0;width:auto;max-width:none;}
-  .columna-rol .rol-info::before,.columna-rol:nth-child(n+4) .rol-info::before{left:26px;right:auto;}
-}
-
-/* ---------- ORGANIGRAMA: líneas conectoras ---------- */
-.organigrama-interactivo{--linea:rgba(62,89,2,.5);--grosor:2px;}
-
-/* Base (pantallas medianas y móviles): árbol de una columna con línea lateral */
-.gerente-centro{position:relative;justify-content:flex-start;margin-bottom:1.4rem;}
-.gerente-centro::after{
-  content:'';position:absolute;left:1.1rem;top:100%;height:1.4rem;
-  border-left:var(--grosor) solid var(--linea);
-}
-.grid-organigrama{
-  grid-template-columns:1fr;gap:1.4rem;
-  margin-left:1.1rem;padding-left:1.4rem;max-width:560px;
-}
-/* línea principal que recorre cada columna hasta la siguiente */
-.columna-rol{position:relative;}
-.columna-rol::after{
-  content:'';position:absolute;left:-1.4rem;top:0;bottom:-1.4rem;
-  border-left:var(--grosor) solid var(--linea);
-}
-.columna-rol:last-child::after{display:none;}
-/* codo que conecta cada jefe con la línea principal */
-.columna-rol > .nodo-org::before{
-  content:'';position:absolute;left:-1.4rem;top:-1.4rem;width:1.4rem;
-  height:calc(50% + 1.4rem);box-sizing:border-box;
-  border-left:var(--grosor) solid var(--linea);border-bottom:var(--grosor) solid var(--linea);
-  border-bottom-left-radius:10px;pointer-events:none;
-}
-
-/* Cargos que dependen de cada jefe: codos individuales */
-.subroles{margin-left:1.9rem;}
-.subroles > .nodo-org::before{
-  content:'';position:absolute;left:-.8rem;top:-.5rem;width:.8rem;
-  height:calc(50% + .5rem);box-sizing:border-box;
-  border-left:var(--grosor) solid var(--linea);border-bottom:var(--grosor) solid var(--linea);
-  border-bottom-left-radius:8px;pointer-events:none;
-}
-.subroles > .nodo-org:first-child::before{top:-.6rem;height:calc(50% + .6rem);}
-
-/* Escritorio: Gerente arriba, barra horizontal y 5 columnas */
-@media(min-width:1180px){
-  .gerente-centro{justify-content:center;margin-bottom:0;}
-  .gerente-centro::after{left:50%;height:1.3rem;margin-left:calc(var(--grosor) / -2);}
-  .grid-organigrama{
-    grid-template-columns:repeat(5,1fr);gap:1.4rem;
-    margin-left:0;padding-left:0;max-width:none;
-  }
-  .columna-rol{position:relative;padding-top:1.3rem;}
-  .columna-rol > .nodo-org::before{display:none;}
-  /* barra horizontal (cubre también la separación entre columnas) */
-  .columna-rol::before{
-    content:'';position:absolute;top:0;left:-.7rem;right:-.7rem;
-    border-top:var(--grosor) solid var(--linea);
-  }
-  .columna-rol:first-child::before{left:50%;}
-  .columna-rol:last-child::before{right:50%;}
-  /* bajada hacia cada jefe */
-  .columna-rol::after,.columna-rol:last-child::after{
-    display:block;content:'';position:absolute;top:0;bottom:auto;left:50%;height:1.3rem;
-    margin-left:calc(var(--grosor) / -2);
-    border-left:var(--grosor) solid var(--linea);
-  }
-}
+/* ---------- Enlace externo: Excel ---------- */
+.enlace-excel{display:inline-flex;align-items:center;gap:.4rem;}
+.enlace-excel svg{width:15px;height:15px;flex-shrink:0;}
+.nav-links a.enlace-excel{color:var(--verde-oscuro);}
+.nav-links a.enlace-excel:hover{color:var(--naranja);}
+#menu-movil a.enlace-excel{display:flex;}
