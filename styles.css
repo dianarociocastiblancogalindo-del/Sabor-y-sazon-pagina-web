@@ -797,3 +797,66 @@ body.pagina-saliendo{
   .columna-rol .rol-info,.columna-rol:nth-child(n+4) .rol-info{left:0;right:0;width:auto;max-width:none;}
   .columna-rol .rol-info::before,.columna-rol:nth-child(n+4) .rol-info::before{left:26px;right:auto;}
 }
+
+/* ---------- ORGANIGRAMA: líneas conectoras ---------- */
+.organigrama-interactivo{--linea:rgba(62,89,2,.5);--grosor:2px;}
+
+/* Base (pantallas medianas y móviles): árbol de una columna con línea lateral */
+.gerente-centro{position:relative;justify-content:flex-start;margin-bottom:1.4rem;}
+.gerente-centro::after{
+  content:'';position:absolute;left:1.1rem;top:100%;height:1.4rem;
+  border-left:var(--grosor) solid var(--linea);
+}
+.grid-organigrama{
+  grid-template-columns:1fr;gap:1.4rem;
+  margin-left:1.1rem;padding-left:1.4rem;max-width:560px;
+}
+/* línea principal que recorre cada columna hasta la siguiente */
+.columna-rol{position:relative;}
+.columna-rol::after{
+  content:'';position:absolute;left:-1.4rem;top:0;bottom:-1.4rem;
+  border-left:var(--grosor) solid var(--linea);
+}
+.columna-rol:last-child::after{display:none;}
+/* codo que conecta cada jefe con la línea principal */
+.columna-rol > .nodo-org::before{
+  content:'';position:absolute;left:-1.4rem;top:-1.4rem;width:1.4rem;
+  height:calc(50% + 1.4rem);box-sizing:border-box;
+  border-left:var(--grosor) solid var(--linea);border-bottom:var(--grosor) solid var(--linea);
+  border-bottom-left-radius:10px;pointer-events:none;
+}
+
+/* Cargos que dependen de cada jefe: codos individuales */
+.subroles{margin-left:1.9rem;}
+.subroles > .nodo-org::before{
+  content:'';position:absolute;left:-.8rem;top:-.5rem;width:.8rem;
+  height:calc(50% + .5rem);box-sizing:border-box;
+  border-left:var(--grosor) solid var(--linea);border-bottom:var(--grosor) solid var(--linea);
+  border-bottom-left-radius:8px;pointer-events:none;
+}
+.subroles > .nodo-org:first-child::before{top:-.6rem;height:calc(50% + .6rem);}
+
+/* Escritorio: Gerente arriba, barra horizontal y 5 columnas */
+@media(min-width:1180px){
+  .gerente-centro{justify-content:center;margin-bottom:0;}
+  .gerente-centro::after{left:50%;height:1.3rem;margin-left:calc(var(--grosor) / -2);}
+  .grid-organigrama{
+    grid-template-columns:repeat(5,1fr);gap:1.4rem;
+    margin-left:0;padding-left:0;max-width:none;
+  }
+  .columna-rol{position:relative;padding-top:1.3rem;}
+  .columna-rol > .nodo-org::before{display:none;}
+  /* barra horizontal (cubre también la separación entre columnas) */
+  .columna-rol::before{
+    content:'';position:absolute;top:0;left:-.7rem;right:-.7rem;
+    border-top:var(--grosor) solid var(--linea);
+  }
+  .columna-rol:first-child::before{left:50%;}
+  .columna-rol:last-child::before{right:50%;}
+  /* bajada hacia cada jefe */
+  .columna-rol::after,.columna-rol:last-child::after{
+    display:block;content:'';position:absolute;top:0;bottom:auto;left:50%;height:1.3rem;
+    margin-left:calc(var(--grosor) / -2);
+    border-left:var(--grosor) solid var(--linea);
+  }
+}
