@@ -1,0 +1,46 @@
+/* =========================================================
+   SERVICIOS: foto de fondo en cada tarjeta
+   Pega este bloque AL FINAL de styles.css.
+   Las 4 fotos van en la raíz del repositorio (junto a styles.css).
+   No hace falta tocar servicios.html.
+   ========================================================= */
+
+/* Base común: la tarjeta crece un poco y el texto se acomoda abajo,
+   así la foto se ve arriba y el texto queda sobre la parte oscura */
+#servicios .tarjeta-servicio{
+  min-height:320px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+}
+
+/* Una foto por tarjeta (según su posición: 1.ª, 2.ª, 3.ª, 4.ª).
+   El degradado oscuro va encima de la foto para que el texto blanco se lea. */
+#servicios .tarjeta-servicio:nth-child(1){
+  background-image:
+    linear-gradient(to bottom, rgba(22,28,3,.10), rgba(22,28,3,.55) 45%, rgba(22,28,3,.90)),
+    url("eventos_corporativos.jpeg");
+}
+#servicios .tarjeta-servicio:nth-child(2){
+  background-image:
+    linear-gradient(to bottom, rgba(22,28,3,.10), rgba(22,28,3,.55) 45%, rgba(22,28,3,.90)),
+    url("Refrigerio_empresarial.jpeg");
+}
+#servicios .tarjeta-servicio:nth-child(3){
+  background-image:
+    linear-gradient(to bottom, rgba(22,28,3,.10), rgba(22,28,3,.55) 45%, rgba(22,28,3,.90)),
+    url("banquete_y_eventos_sociales.jpeg");
+}
+#servicios .tarjeta-servicio:nth-child(4){
+  background-image:
+    linear-gradient(to bottom, rgba(22,28,3,.10), rgba(22,28,3,.55) 45%, rgba(22,28,3,.90)),
+    url("cafe.jpeg");
+}
+
+/* Textos en claro sobre la foto */
+#servicios .tarjeta-servicio h3{color:var(--blanco);text-shadow:0 1px 8px rgba(0,0,0,.35);}
+#servicios .tarjeta-servicio p{color:rgba(255,254,249,.92);text-shadow:0 1px 8px rgba(0,0,0,.35);}
+#servicios .tarjeta-servicio .num{color:rgba(255,254,249,.85);}
